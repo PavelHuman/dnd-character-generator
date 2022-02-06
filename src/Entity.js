@@ -1,4 +1,24 @@
+// Вы генерируете шесть значений характеристик
+
+// случайно. Бросьте четыре 6-гранных кости и запи-
+// шите сумму трёх наибольших результатов на листке
+
+// для заметок. Проделайте это ещё пять раз, чтобы у
+// вас получилось 6 чисел.
+//AbilityScores: Strength, Dexterity, Constitution, Intelligence, Wisdom, and Charisma
 class Entity {
+  constructor() {
+   this.initAbilityScores()
+  }
+  initAbilityScores() {
+    this.strength = null
+    this.dexterity = null
+    this.constituion = null
+    this.intelligence = null
+    this.wisdom = null
+    this.charisma = null
+  }
+
   sayHello() {
     console.log('hello');
   }
