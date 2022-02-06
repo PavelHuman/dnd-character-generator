@@ -4,13 +4,14 @@ class DiceThrower {
     return [qtyDice, typeOfDices]
   }
 
-  throwDices(dices) {
-    const [qty, type] = DiceThrower.parseDices(dices)
+  throwDices(dicesToTrow) {
+    const [diceQty, diceType] = DiceThrower.parseDices(dicesToTrow)
 
-    console.log({
-      qty,
-      type,
-    })
+    return Array.from({ length: +diceQty }, () => DiceThrower.throwDice(+diceType))
+  }
+
+  static throwDice(diceType) {
+    return Math.ceil(Math.random() * diceType)
   }
 }
 
