@@ -1,6 +1,7 @@
-import DiceGenerator from './DiceGenerator.js'
+import DiceThrower from './DiceThrower.js'
 
 console.log("index.js")
 
-const diceGenerator = new DiceGenerator('4d6')
-diceGenerator.parseDice()
+const diceGenerator = new DiceThrower()
+diceGenerator.throwDices('4d6')
+diceGenerator.throwDices('2d20')
