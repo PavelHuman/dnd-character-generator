@@ -19,4 +19,4 @@ class DiceThrower {
   }
 }
 
-export default DiceThrower
+export const diceThrower = new DiceThrower();

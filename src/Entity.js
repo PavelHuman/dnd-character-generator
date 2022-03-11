@@ -1,4 +1,4 @@
-import DiceThrower from './DiceThrower.js'
+import { diceThrower } from './DiceThrower.js'
 // Вы генерируете шесть значений характеристик случайно.
 
 // Бросьте четыре 6-гранных кости и запишите
@@ -9,9 +9,10 @@ import DiceThrower from './DiceThrower.js'
 class Entity {
   constructor() {
     this.initAbilityScores()
+    this.initAbilities()
   }
 
-  initAbilityScores() {
+  initAbilities() {
     this.strength = null
     this.dexterity = null
     this.constituion = null
@@ -19,12 +20,26 @@ class Entity {
     this.wisdom = null
     this.charisma = null
   }
-}
 
 
 
-function sayHello() {
-  console.log('hello');
+  initAbilityScores() {
+    
+    this.abilityScores = []
+    
+    for (let i = 0; i < 6; i++) {
+
+      const trow = diceThrower.throwDices('4d6')
+
+      const sorted = trow.slice().sort((a, b) => a - b)
+
+      const firstMaxThree = sorted.reverse().slice(0, 3)
+
+      const sum = firstMaxThree.reduce((acc, current) => acc + current, 0)
+
+      this.abilityScores.push(sum)
+    }
+  }
 }
 
 export default Entity
