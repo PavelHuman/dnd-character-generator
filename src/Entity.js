@@ -1,5 +1,5 @@
 import { diceThrower } from './DiceThrower.js'
-import { playersHandBook } from './PlayersHandBook.js'
+import { phb } from './PlayersHandBook.js'
 
 class Entity {
   constructor() {
