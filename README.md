@@ -2,7 +2,7 @@
 
 D&D character generator.
 
-## git flow
+## How to resolve issue?
 
 в зависимости от типа ишью добавить префикс к имени ветки (feature|bugfix)
 
