@@ -4,13 +4,34 @@ D&D character generator.
 
 ## git flow
 
-https://www.youtube.com/watch?v=bkNCylkzFRk&list=PL0lO_mIqDDFUesRNkeg46TDd5I6r7p2PI
+в зависимости от типа ишью добавить префикс к имени ветки (feature|bugfix)
 
-1. Создать новую ветку feature/add-entity
-2. сделать инит коммит
+1. Создать новую ветку c `master`, например `feature/add-entity`
+
+    ```shell
+    git checkout master
+    git checkout -b feature/add-entity
+    ```
+
+2. сделать инит коммит (создать директорию или файл в котором предполагается сделать изменения)
+
+    ```shell
+    git add .
+    git commit -m 'init commit'
+    ```
+
 3. запушить её на гитхаб
-4. создать пуллреквест фича -> мастер
-5. привязать ветку к этому ишью
+
+    ```shell
+    git push -u origin feature/add-entity
+    ```
+
+4. [создать пуллреквест](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request) `master <- feature/add-entity`
+5. [привязать ветку к этому ишью](https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue)
+
+***
+
+[гайд по гиту](https://www.youtube.com/watch?v=bkNCylkzFRk&list=PL0lO_mIqDDFUesRNkeg46TDd5I6r7p2PI)
 
 ## Description
 
