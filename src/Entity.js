@@ -8,17 +8,22 @@ import { diceThrower } from './DiceThrower.js'
 
 class Entity {
   constructor() {
+    this.experiencePoints = 0
+
     this.initAbilityScores()
     this.initAbilities()
+    this.initLevel()
   }
 
   initAbilities() {
-    this.strength = null
-    this.dexterity = null
-    this.constituion = null
-    this.intelligence = null
-    this.wisdom = null
-    this.charisma = null
+    this.abilities = {
+      strength: null,
+      dexterity: null,
+      constituion: null,
+      intelligence: null,
+      wisdom: null,
+      charisma: null,
+    }
   }
 
 
@@ -35,6 +40,14 @@ class Entity {
       this.abilityScores.push(sum)
     }
   }
+  initLevel() {
+    if (this.experiencePoints < 300) {
+      this.level = 1
+      this.proficiencyBonus = 2
+    }
+  }
+
 }
+
 
 export default Entity
