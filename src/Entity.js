@@ -1,8 +1,7 @@
-import { diceThrower } from './DiceThrower.js'
 import { phb } from './PlayersHandBook.js'
 
 class Entity {
-  constructor({ data }) {
+  constructor(data = {}) {
     this.name = data.name ?? ''
     this.race = data.race ?? ''
     this.experiencePoints = 0
@@ -18,7 +17,7 @@ class Entity {
 
   initAbilityScores() {
     this.abilityScores = Object.keys(this.abilities)
-      .map(() => phb.computeAbilitySrore(diceThrower.throwDices('4d6')))
+      .map(() => phb.getAbilityScore())
   }
 
   initLevel() {

@@ -3,7 +3,7 @@ import Character from "./components/Character.js"
 import Form from './components/Form.js'
 
 class App extends Component {
-  constructor({ model, root }) {
+  constructor({ root, model }) {
     super({ root })
     this.model = model
   }
