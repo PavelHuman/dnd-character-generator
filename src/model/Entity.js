@@ -1,4 +1,4 @@
-import { phb } from './PlayersHandBook.js'
+import { phb } from '../PlayersHandBook.js'
 
 class Entity {
   constructor(data = {}) {

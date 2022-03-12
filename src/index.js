@@ -1,5 +1,5 @@
-import { model } from './Model.js'
-import App from './App.js'
+import { model } from './model/Model.js'
+import App from './view/App.js'
 
 console.log("index.js")
 
