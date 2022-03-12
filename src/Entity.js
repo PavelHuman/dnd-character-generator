@@ -3,8 +3,8 @@ import { phb } from './PlayersHandBook.js'
 
 class Entity {
   constructor({ data }) {
-    this.name = data?.name ?? ''
-    this.race = data?.race ?? ''
+    this.name = data.name ?? ''
+    this.race = data.race ?? ''
 
     this.initAbilities()
     this.initAbilityScores()

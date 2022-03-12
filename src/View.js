@@ -1,7 +1,10 @@
-class View {
-  constructor({ model }) {
+import Component from './components/Component.js'
+import Character from "./components/Character.js"
+
+class View extends Component {
+  constructor({ model, root }) {
+    super({ root })
     this.model = model
-    this.root = document.getElementById('root')
   }
 
   onSubmit(event) {
@@ -9,10 +12,8 @@ class View {
     const form = event.target
     console.log({ form })
     this.model.refresh({
-      data: {
-        name: form.elements.name.value,
-        race: form.elements.race.value,
-      }
+      name: form.elements.name.value,
+      race: form.elements.race.value,
     })
 
     console.log(this.model)
@@ -22,6 +23,7 @@ class View {
 
   render() {
     this.clear()
+
     const template = `
       <div>
         <h2>Fill form to create D&D character</h2>
@@ -34,21 +36,18 @@ class View {
         </form>
       </div>
 
-      <div>
-        <h2>Generated Character</h2>
-        <div>${this.model.entity.name}</div>
-        <div>${this.model.entity.race}</div>
-      </div>
+      <div data-character-container></div>
     `
 
     this.root.insertAdjacentHTML('afterbegin', template)
 
     const form = root.querySelector('[data-form]')
-    form.addEventListener('submit', this.onSubmit.bind(this))
-  }
+    form.addEventListener('submit', (event) => this.onSubmit(event))
 
-  clear() {
-    this.root.innerHTML = ''
+    new Character({
+      root: this.root.querySelector('[data-character-container]'),
+      model: this.model,
+    }).render()
   }
 }
 
