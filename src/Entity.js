@@ -15,7 +15,8 @@ class Entity {
   }
 
   initAbilityScores() {
-    this.abilityScores = Object.keys(this.abilities).map(() => phb.computeAbilitySrore(diceThrower.throwDices('4d6')))
+    this.abilityScores = Object.keys(this.abilities)
+      .map(() => phb.computeAbilitySrore(diceThrower.throwDices('4d6')))
   }
 }
 
