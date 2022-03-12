@@ -1,4 +1,5 @@
 import { diceThrower } from './DiceThrower.js'
+import { playersHandBook } from './PlayersHandBook.js'
 
 class Entity {
   constructor() {
