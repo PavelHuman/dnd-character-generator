@@ -2,6 +2,12 @@
 
 D&D character generator.
 
+## Правила и бизнес-логика
+
+[Player's Hand Book](https://drive.google.com/file/d/1ok1PpiE7tSGOw8LsRX9kV4i6VCKf_gRZ/view?usp=sharing)
+
+[Basic Rules](https://dnd.wizards.com/articles/features/basicrules)
+
 ## How to resolve issue?
 
 в зависимости от типа ишью добавить префикс к имени ветки (feature|bugfix)
