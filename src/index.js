@@ -1,5 +1,5 @@
 import Entity from './Entity.js'
-import View from './View.js'
+import App from './App.js'
 
 console.log("index.js")
 
@@ -15,11 +15,9 @@ window.addEventListener('load', initApp)
 function initApp() {
   model.refresh()
 
-  const view = new View({
+  new App({
     model,
     root: document.getElementById('root'),
-  })
-
-  view.render()
+  }).render()
 }
 

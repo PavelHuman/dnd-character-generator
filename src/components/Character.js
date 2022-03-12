@@ -13,11 +13,11 @@ class Character extends Component {
       <h2>Generated Character</h2>
 
       <div>
-        <div>Name: ${this.model.entity.name}</div>
-        <div>Race: ${this.model.entity.race}</div>
-        <div>Level: ${this.model.entity.level}</div>
-        <div>Experience Points: ${this.model.entity.experiencePoints}</div>
-        <div>Proficiency Bonus: ${this.model.entity.proficiencyBonus}</div>
+        <div>Name: ${this.model.name}</div>
+        <div>Race: ${this.model.race}</div>
+        <div>Level: ${this.model.level}</div>
+        <div>Experience Points: ${this.model.experiencePoints}</div>
+        <div>Proficiency Bonus: ${this.model.proficiencyBonus}</div>
       </div>
     `
 
