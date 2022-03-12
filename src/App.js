@@ -6,6 +6,13 @@ class App extends Component {
   constructor({ root, model }) {
     super({ root })
     this.model = model
+
+    this.template = `
+      <div>
+        <div data-form-container></div>
+        <div data-character-container></div>
+      </div>
+    `
   }
 
   onSubmit(event, callback) {
@@ -17,16 +24,7 @@ class App extends Component {
   }
 
   render() {
-    this.clear()
-
-    const template = `
-      <div>
-        <div data-form-container></div>
-        <div data-character-container></div>
-      </div>
-    `
-
-    this.root.insertAdjacentHTML('afterbegin', template)
+    super.render()
 
     new Form({
       root: this.root.querySelector('[data-form-container]'),
