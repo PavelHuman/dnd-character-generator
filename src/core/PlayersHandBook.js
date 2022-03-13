@@ -1,4 +1,5 @@
 import { diceRoller } from './DiceRoller.js'
+import { raceFactory } from './races/index.js'
 
 class PlayersHandBook {
   getAbilityScore() {
@@ -17,6 +18,10 @@ class PlayersHandBook {
       wisdom: null,
       charisma: null,
     }
+  }
+
+  getRacialTraits(race, options) {
+    return raceFactory(race, options)
   }
 }
 

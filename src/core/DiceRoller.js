@@ -4,18 +4,18 @@ class DiceRoller {
     return [qtyDice, typeOfDices]
   }
 
-  static rollDice(diceType) {
-    return Math.ceil(Math.random() * diceType)
-  }
-
   constructor() {
     this.name = 'DiceThrower'
+  }
+
+  rollDice(diceType) {
+    return Math.ceil(Math.random() * diceType)
   }
 
   rollDices(dicesToRoll) {
     const [diceQty, diceType] = DiceRoller.parseDices(dicesToRoll)
 
-    return Array.from({ length: +diceQty }, () => DiceRoller.rollDice(+diceType))
+    return Array.from({ length: +diceQty }, () => this.rollDice(+diceType))
   }
 }
 

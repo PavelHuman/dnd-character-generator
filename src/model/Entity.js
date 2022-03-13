@@ -9,6 +9,7 @@ class Entity {
     this.initAbilities()
     this.initAbilityScores()
     this.initLevel()
+    this.initRace()
   }
 
   initAbilities() {
@@ -25,6 +26,10 @@ class Entity {
       this.level = 1
       this.proficiencyBonus = 2
     }
+  }
+
+  initRace() {
+    Object.assign(this, phb.getRacialTraits(this.race))
   }
 
 }

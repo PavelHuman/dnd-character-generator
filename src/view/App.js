@@ -25,6 +25,7 @@ class App extends Component {
 
   render() {
     super.render()
+    console.log(this.model)
 
     new Form({
       root: this.root.querySelector('[data-form-container]'),
