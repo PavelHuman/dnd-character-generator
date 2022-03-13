@@ -1,10 +1,5 @@
 import { diceThrower } from './DiceThrower.js'
-// Вы генерируете шесть значений характеристик случайно.
-
-// Бросьте четыре 6-гранных кости и запишите
-// сумму трёх наибольших результатов на листке для заметок.
-
-// Проделайте это ещё пять раз, чтобы у вас получилось 6 чисел.
+import { phb } from './PlayersHandBook.js'
 
 class Entity {
   constructor() {
@@ -30,7 +25,6 @@ class Entity {
 
   initAbilityScores() {
     this.abilityScores = []
-
     for (let i = 0; i < 6; i++) {
       const trow = diceThrower.throwDices('4d6')
       const sorted = trow.slice().sort((a, b) => a - b)
