@@ -8,6 +8,7 @@ class Entity {
     this.initAbilityScores()
     this.initAbilities()
     this.initLevel()
+
   }
 
   initAbilities() {
@@ -26,12 +27,8 @@ class Entity {
   initAbilityScores() {
     this.abilityScores = []
     for (let i = 0; i < 6; i++) {
-      const trow = diceThrower.throwDices('4d6')
-      const sorted = trow.slice().sort((a, b) => a - b)
-      const firstMaxThree = sorted.reverse().slice(0, 3)
-      const sum = firstMaxThree.reduce((acc, current) => acc + current, 0)
-
-      this.abilityScores.push(sum)
+      const thrown4d6 = diceThrower.throwDices('4d6')
+      this.abilityScores.push(phb.computeAbilityScore(thrown4d6))
     }
   }
   initLevel() {
