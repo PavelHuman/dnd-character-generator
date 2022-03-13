@@ -12,46 +12,38 @@ D&D character generator.
 
 1. Клонировать проект
 
-```shell
-  git clone https://github.com/PavelHuman/dnd-character-generator.git
-```
+    ```shell
+      git clone https://github.com/PavelHuman/dnd-character-generator.git
+    ```
 
 2. перейти в директорию с клонированным проектом
 
-```shell
-  cd dnd-character-generator
-```
+    ```shell
+      cd dnd-character-generator
+    ```
 
 3. установить npm-зависимости
 
-```shel
-  npm i
-```
+    ```shel
+      npm i
+    ```
 
 ## How to resolve issue?
 
 в зависимости от типа ишью добавить префикс к имени ветки (feature|bugfix)
 
-1. Создать новую ветку c `master`, например `feature/add-entity`
+1. на странице `issue` в правом сайдбаре нажать `Create a branch` в разделе `Development`
 
-    ```shell
-    git checkout master
-    git checkout -b feature/add-entity
-    ```
+   ![This is an image](./docs/images/Screenshot%202022-03-13%20at%2018.12.11.png)
 
-2. сделать инит коммит (создать директорию или файл в котором предполагается сделать изменения)
+2. выбрать `Checkout locally` -> `Create branch`
 
-    ```shell
-    git add .
-    git commit -m 'init commit'
-    ```
+   ![This is an image](./docs/images/Screenshot%202022-03-13%20at%2018.13.35.png)
+    
+3. скопировать и запустить команды в локальном репозитории
 
-3. запушить её на гитхаб
-
-    ```shell
-    git push -u origin feature/add-entity
-    ```
-
+   ![This is an image](./docs/images/Screenshot%202022-03-13%20at%2018.15.09.png)
+    
 4. [создать пуллреквест](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request) `master <- feature/add-entity`
 5. [привязать ветку к этому ишью](https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue)
 
