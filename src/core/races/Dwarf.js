@@ -5,7 +5,15 @@ class Dwarf {
     constitution: 2,
   }
 
+  hitPointMaximumIncrease = 0
+
   speed = 25
+
+  proficiency = {
+    tools: ['smith\'s tools', 'brewer\'s supplies', 'mason\'s tools'],
+    weapon: [],
+    armor: [],
+  }
 
   darkvision = {
     state: true,
@@ -25,11 +33,6 @@ class Dwarf {
     description: 'You have proficiency with the battleaxe, handaxe, light hammer, and warhammer',
   }
 
-  proficiency = {
-    tools: ['smith\'s tools', 'brewer\'s supplies', 'mason\'s tools'],
-    weapon: ['battleaxe', 'handaxe', 'light hammer', 'warhammer'],
-    armor: [],
-  }
 
   stonecunning = {
     state: true,
@@ -40,8 +43,28 @@ class Dwarf {
   languages = ['common', 'dwarvish']
 
   constructor(options = {}) {
+    this.initAge(options.age)
+    this.initAlignment(options.alignment)
+    this.initSize(options.size)
     this.initProficiencyTools()
+
+    this.applyDwarvenCombatTraining()
+
     this.initSubrace(options.subrace)
+  }
+
+  initAge(age) {
+    const min = 18
+    const max = 450
+    this.age = age ? age : Math.ceil(min + Math.random() * (max - min))
+  }
+
+  initAlignment(alignment) {
+    this.alignment = alignment
+  }
+
+  initSize(size) {
+    this.size = size
   }
 
   initProficiencyTools() {
@@ -62,6 +85,8 @@ class Dwarf {
             description: 'Your hit point maximum increases by 1, and it increases by 1 every time you gain a level.'
           }
         })
+
+        this.applyDwarvenToughness()
 
         break
       }
@@ -84,6 +109,21 @@ class Dwarf {
       }
       default: return
     }
+  }
+
+  applyDwarvenCombatTraining() {
+    Object.assign(this.proficiency, {
+      weapon: [
+        ...this.proficiency.weapon,
+        ...['battleaxe', 'handaxe', 'light hammer', 'warhammer']
+      ]
+    })
+  }
+
+  applyDwarvenToughness() {
+    Object.assign(this, {
+      hitPointMaximumIncrease: this.hitPointMaximumIncrease + 1
+    })
   }
 
   applyDwarvenArmorTraining() {
