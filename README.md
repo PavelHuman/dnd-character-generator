@@ -8,6 +8,26 @@ D&D character generator.
 
 [Basic Rules](https://dnd.wizards.com/articles/features/basicrules)
 
+## Contribution
+
+1. Клонировать проект
+
+```shell
+  git clone https://github.com/PavelHuman/dnd-character-generator.git
+```
+
+2. перейти в директорию с клонированным проектом
+
+```shell
+  cd dnd-character-generator
+```
+
+3. установить npm-зависимости
+
+```shel
+  npm i
+```
+
 ## How to resolve issue?
 
 в зависимости от типа ишью добавить префикс к имени ветки (feature|bugfix)
