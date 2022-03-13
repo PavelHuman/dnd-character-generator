@@ -40,10 +40,21 @@ D&D character generator.
 
    ![This is an image](./docs/images/Screenshot%202022-03-13%20at%2018.13.35.png)
     
-3. скопировать и запустить команды в локальном репозитории
+3. скопировать и запустить команды в локальном репозитории находясь на ветке `master`
+   1. скопировать гит команды из модального окна
 
    ![This is an image](./docs/images/Screenshot%202022-03-13%20at%2018.15.09.png)
-    
+
+   2. свичнуться в `master`
+
+  ```shell
+    git checkout master
+  ```
+
+   3. вставить скопированные из модалки команды
+
+   ![This is an image](./docs/images/Screenshot%202022-03-13%20at%2018.19.14.png)
+
 4. [создать пуллреквест](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request) `master <- feature/add-entity`
 5. [привязать ветку к этому ишью](https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue)
 
