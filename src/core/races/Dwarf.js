@@ -72,43 +72,51 @@ class Dwarf {
   }
 
   initSubrace(subrace) {
-    switch (subrace) {
-      case 'hill dwarf': {
-        Object.assign(this, {
-          abilityScoreIncrease: {
-            ...this.abilityScoreIncrease,
-            wisdom: 1,
-          },
-          dwarvenToughness: {
-            state: true,
-            title: 'Dwarven Toughness',
-            description: 'Your hit point maximum increases by 1, and it increases by 1 every time you gain a level.'
-          }
-        })
-
-        this.applyDwarvenToughness()
-
-        break
-      }
-      case 'mountain dwarf': {
-        Object.assign(this, {
-          abilityScoreIncrease: {
-            ...this.abilityScoreIncrease,
-            strength: 2,
-          },
-          dwarvenArmorTraining: {
-            state: true,
-            title: 'Dwarven Armor Training',
-            description: 'You have proficiency with light and medium armor.'
-          }
-        })
-
-        this.applyDwarvenArmorTraining()
-
-        break
-      }
-      default: return
+    console.log('initSubrace', subrace)
+    const subraces = {
+      'hill dwarf': () => this.initHillDwarfSubrace(),
+      'mountain dwarf': () => this.initMountainDwarfSubrace(),
     }
+
+    subrace ? subraces[subrace]() : subraces[this.rollKeys(Object.keys(subraces))]()
+  }
+
+  rollKeys(keys) {
+    return keys[diceRoller.rollDice(keys.length) - 1]
+  }
+
+  initHillDwarfSubrace() {
+    Object.assign(this, {
+      subrace: 'hill dwarf',
+      abilityScoreIncrease: {
+        ...this.abilityScoreIncrease,
+        wisdom: 1,
+      },
+      dwarvenToughness: {
+        state: true,
+        title: 'Dwarven Toughness',
+        description: 'Your hit point maximum increases by 1, and it increases by 1 every time you gain a level.'
+      }
+    })
+
+    this.applyDwarvenToughness()
+  }
+
+  initMountainDwarfSubrace() {
+    Object.assign(this, {
+      subrace: 'mountain dwarf',
+      abilityScoreIncrease: {
+        ...this.abilityScoreIncrease,
+        strength: 2,
+      },
+      dwarvenArmorTraining: {
+        state: true,
+        title: 'Dwarven Armor Training',
+        description: 'You have proficiency with light and medium armor.'
+      }
+    })
+
+    this.applyDwarvenArmorTraining()
   }
 
   applyDwarvenCombatTraining() {
