@@ -1,0 +1,25 @@
+{
+  "name": "dnd-character-generator",
+  "version": "1.0.0",
+  "description": "D&D character generator.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint '**/*.js'",
+    "lint:fix": "npm run lint -- --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PavelHuman/dnd-character-generator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PavelHuman/dnd-character-generator/issues"
+  },
+  "homepage": "https://github.com/PavelHuman/dnd-character-generator#readme",
+  "devDependencies": {
+    "eslint": "^8.11.0"
+  }
+}

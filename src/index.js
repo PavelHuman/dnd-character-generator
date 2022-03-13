@@ -1,7 +1,7 @@
 import { model } from './model/Model.js'
 import App from './view/App.js'
 
-console.log("index.js")
+console.log('index.js')
 
 window.addEventListener('load', initApp)
 
