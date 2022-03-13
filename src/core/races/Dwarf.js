@@ -72,7 +72,6 @@ class Dwarf {
   }
 
   initSubrace(subrace) {
-    console.log('initSubrace', subrace)
     const subraces = {
       'hill dwarf': () => this.initHillDwarfSubrace(),
       'mountain dwarf': () => this.initMountainDwarfSubrace(),
