@@ -1,5 +1,5 @@
 import { diceRoller } from './DiceRoller.js'
-import { raceFactory } from './races/index.js'
+import { raceFactory, subraceFactory } from './races/index.js'
 
 class PlayersHandBook {
   getAbilityScore() {
@@ -22,6 +22,10 @@ class PlayersHandBook {
 
   getRacialTraits(race, options) {
     return raceFactory(race, options)
+  }
+
+  getSubracialTraits(subrace) {
+    return subraceFactory(subrace)
   }
 }
 

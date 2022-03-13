@@ -6,3 +6,10 @@ export const raceFactory = (race, options) => {
     default: return {}
   }
 }
+
+export const subraceFactory = (subrace, race) => {
+  switch (subrace) {
+    case 'hill dwarf':
+    default: return
+  }
+}

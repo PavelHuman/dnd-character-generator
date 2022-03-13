@@ -4,12 +4,14 @@ class Entity {
   constructor(data = {}) {
     this.name = data.name ?? ''
     this.race = data.race ?? ''
-    this.experiencePoints = 0
+    this.subrace = data.subrace ?? ''
+    this.experiencePoints = data.experiencePoints ?? 0
 
     this.initAbilities()
     this.initAbilityScores()
     this.initLevel()
     this.initRace()
+    this.initSubrace()
   }
 
   initAbilities() {
@@ -30,6 +32,10 @@ class Entity {
 
   initRace() {
     Object.assign(this, phb.getRacialTraits(this.race))
+  }
+
+  initSubrace() {
+    Object.assign(this, phb.getSubracialTraits(this.subrace))
   }
 
 }
