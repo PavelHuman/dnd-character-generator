@@ -25,7 +25,6 @@ class Entity {
 
   initAbilityScores() {
     this.abilityScores = []
-
     for (let i = 0; i < 6; i++) {
       const trow = diceThrower.throwDices('4d6')
       const sorted = trow.slice().sort((a, b) => a - b)
