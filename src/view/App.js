@@ -1,5 +1,5 @@
 import Component from './components/Component.js'
-import Character from "./components/Character.js"
+import Character from './components/Character.js'
 import Form from './components/Form.js'
 
 class App extends Component {
