@@ -1,7 +1,7 @@
 import { diceThrower } from './DiceThrower.js'
 import Entity from './Entity.js'
 
-console.log("index.js")
+console.log('index.js')
 
 const entity = new Entity()
 console.log(entity)
