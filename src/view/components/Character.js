@@ -12,6 +12,7 @@ class Character extends Component {
       <div>
         <div>Name: ${this.model.name}</div>
         <div>Race: ${this.model.race}</div>
+        <div>Subrace: ${this.model.subrace}</div>
         <div>Level: ${this.model.level}</div>
         <div>Experience Points: ${this.model.experiencePoints}</div>
         <div>Proficiency Bonus: ${this.model.proficiencyBonus}</div>

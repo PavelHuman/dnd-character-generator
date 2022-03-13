@@ -12,7 +12,8 @@ class Form extends Component {
   
       <form data-form>
         <input type='text' name='name' placeholder='Name' value='${this.model.entity.name}' />
-        <input type='race' name='race' placeholder='Race' value='${this.model.entity.race}' />
+        <input type='text' name='race' placeholder='Race' value='${this.model.entity.race}' />
+        <input type='text' name='subrace' placeholder='Subrace' value='${this.model.entity.subrace}' />
   
         <button type='submit'>Generate</button>
       </form>
@@ -20,11 +21,12 @@ class Form extends Component {
   }
 
   handleSubmit(event) {
-    const [name, race] = event.target
+    const [name, race, subrace] = event.target
 
     this.model.refresh({
       name: name.value,
       race: race.value,
+      subrace: subrace.value,
     })
   }
 
