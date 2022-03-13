@@ -11,7 +11,6 @@ class Entity {
     this.initAbilityScores()
     this.initLevel()
     this.initRace()
-    this.initSubrace()
   }
 
   initAbilities() {
@@ -31,11 +30,7 @@ class Entity {
   }
 
   initRace() {
-    Object.assign(this, phb.getRacialTraits(this.race))
-  }
-
-  initSubrace() {
-    Object.assign(this, phb.getSubracialTraits(this.subrace))
+    Object.assign(this, phb.getRacialTraits(this.race, { subrace: this.subrace }))
   }
 
 }

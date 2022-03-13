@@ -27,7 +27,8 @@ class Dwarf {
 
   proficiency = {
     tools: ['smith\'s tools', 'brewer\'s supplies', 'mason\'s tools'],
-    weapons: ['battleaxe', 'handaxe', 'light hammer', 'warhammer']
+    weapon: ['battleaxe', 'handaxe', 'light hammer', 'warhammer'],
+    armor: [],
   }
 
   stonecunning = {
@@ -39,13 +40,59 @@ class Dwarf {
   languages = ['common', 'dwarvish']
 
   constructor(options = {}) {
-    this.options = options
-
     this.initProficiencyTools()
+    this.initSubrace(options.subrace)
   }
 
   initProficiencyTools() {
     this.proficiency.tools = [this.proficiency.tools[diceRoller.rollDice(this.proficiency.tools.length) - 1]]
+  }
+
+  initSubrace(subrace) {
+    switch (subrace) {
+      case 'hill dwarf': {
+        Object.assign(this, {
+          abilityScoreIncrease: {
+            ...this.abilityScoreIncrease,
+            wisdom: 1,
+          },
+          dwarvenToughness: {
+            state: true,
+            title: 'Dwarven Toughness',
+            description: 'Your hit point maximum increases by 1, and it increases by 1 every time you gain a level.'
+          }
+        })
+
+        break
+      }
+      case 'mountain dwarf': {
+        Object.assign(this, {
+          abilityScoreIncrease: {
+            ...this.abilityScoreIncrease,
+            strength: 2,
+          },
+          dwarvenArmorTraining: {
+            state: true,
+            title: 'Dwarven Armor Training',
+            description: 'You have proficiency with light and medium armor.'
+          }
+        })
+
+        this.applyDwarvenArmorTraining()
+
+        break
+      }
+      default: return
+    }
+  }
+
+  applyDwarvenArmorTraining() {
+    Object.assign(this.proficiency, {
+      armor: [
+        ...this.proficiency.armor,
+        ...['light', 'medium'],
+      ],
+    })
   }
 }
 
