@@ -12,6 +12,10 @@ class DiceRoller {
     return Math.ceil(Math.random() * diceType)
   }
 
+  rollKeys(keys) {
+    return keys[this.rollDice(keys.length) - 1]
+  }
+
   rollDices(dicesToRoll) {
     const [diceQty, diceType] = DiceRoller.parseDices(dicesToRoll)
 

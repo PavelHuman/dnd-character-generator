@@ -1,6 +1,7 @@
 import { diceRoller } from '../DiceRoller.js'
+import Race from './Race.js'
 
-class Dwarf {
+class Dwarf extends Race {
   abilityScoreIncrease = {
     constitution: 2,
   }
@@ -8,12 +9,6 @@ class Dwarf {
   hitPointMaximumIncrease = 0
 
   speed = 25
-
-  proficiency = {
-    tools: ['smith\'s tools', 'brewer\'s supplies', 'mason\'s tools'],
-    weapon: [],
-    armor: [],
-  }
 
   darkvision = {
     state: true,
@@ -43,9 +38,7 @@ class Dwarf {
   languages = ['common', 'dwarvish']
 
   constructor(options = {}) {
-    this.initAge(options.age)
-    this.initAlignment(options.alignment)
-    this.initSize(options.size)
+    super(options)
     this.initProficiencyTools()
 
     this.applyDwarvenCombatTraining()
@@ -53,22 +46,9 @@ class Dwarf {
     this.initSubrace(options.subrace)
   }
 
-  initAge(age) {
-    const min = 18
-    const max = 450
-    this.age = age ? age : Math.ceil(min + Math.random() * (max - min))
-  }
-
-  initAlignment(alignment) {
-    this.alignment = alignment
-  }
-
-  initSize(size) {
-    this.size = size
-  }
-
   initProficiencyTools() {
-    this.proficiency.tools = [this.proficiency.tools[diceRoller.rollDice(this.proficiency.tools.length) - 1]]
+    const tools = ['smith\'s tools', 'brewer\'s supplies', 'mason\'s tools']
+    this.proficiency.tools = [diceRoller.rollKeys(tools)]
   }
 
   initSubrace(subrace) {
@@ -77,11 +57,7 @@ class Dwarf {
       'mountain dwarf': () => this.initMountainDwarfSubrace(),
     }
 
-    subrace ? subraces[subrace]() : subraces[this.rollKeys(Object.keys(subraces))]()
-  }
-
-  rollKeys(keys) {
-    return keys[diceRoller.rollDice(keys.length) - 1]
+    subrace ? subraces[subrace]() : subraces[diceRoller.rollKeys(Object.keys(subraces))]()
   }
 
   initHillDwarfSubrace() {
