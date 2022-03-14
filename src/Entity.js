@@ -1,5 +1,5 @@
-import { diceThrower } from './DiceThrower.js'
-import { phb } from './PlayersHandBook.js'
+
+import { phb } from './core/PlayersHandBook.js'
 
 class Entity {
   constructor() {
@@ -27,8 +27,7 @@ class Entity {
   initAbilityScores() {
     this.abilityScores = []
     for (let i = 0; i < 6; i++) {
-      const thrown4d6 = diceThrower.throwDices('4d6')
-      this.abilityScores.push(phb.computeAbilityScore(thrown4d6))
+      this.abilityScores.push(phb.getAbilityScore())
     }
   }
   initLevel() {
