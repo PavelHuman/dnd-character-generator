@@ -30,8 +30,6 @@ D&D character generator.
 
 ## How to resolve issue?
 
-в зависимости от типа ишью добавить префикс к имени ветки (feature|bugfix)
-
 1. на странице `issue` в правом сайдбаре нажать `Create a branch` в разделе `Development`
 
    ![This is an image](./docs/images/Screenshot%202022-03-13%20at%2018.12.11.png)
