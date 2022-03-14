@@ -6,8 +6,6 @@ class Dwarf extends Race {
     constitution: 2,
   }
 
-  hitPointMaximumIncrease = 0
-
   speed = 25
 
   darkvision = {

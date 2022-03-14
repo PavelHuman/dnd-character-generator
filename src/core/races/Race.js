@@ -1,4 +1,6 @@
 class Race {
+  hitPointMaximumIncrease = 0
+
   proficiency = {
     tools: [],
     weapon: [],
