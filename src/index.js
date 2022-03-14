@@ -1,4 +1,4 @@
-import { diceThrower } from './DiceThrower.js'
+
 import Entity from './Entity.js'
 
 console.log('index.js')
