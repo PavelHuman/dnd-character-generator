@@ -27,7 +27,7 @@ class Entity {
   initAbilityScores() {
     this.abilityScores = []
     for (let i = 0; i < 6; i++) {
-      this.abilityScores.push(phb.computeAbilityScore())
+      this.abilityScores.push(phb.getAbilityScore())
     }
   }
   initLevel() {

@@ -1,7 +1,7 @@
 import { diceRoller as diceRoller } from './DiceRoller.js'
 class PlayersHandBook {
 
-  computeAbilityScore() {
+  getAbilityScore() {
     const rolln4d6 = diceRoller.rollDices('4d6')
     const sorted = rolln4d6.slice().sort((a, b) => a - b)
     const firstMaxThree = sorted.reverse().slice(0, 3)
