@@ -4,7 +4,7 @@ D&D character generator.
 
 ## Правила и бизнес-логика
 
-[Player's Hand Book (rus)](https://drive.google.com/file/d/1ok1PpiE7tSGOw8LsRX9kV4i6VCKf_gRZ/view?usp=sharing)
+[Player's Hand Book (rus)](https://drive.google.com/file/d/1ok1PpiE7tSGOw8LsRX9kV4i6VCKf_gRZ/view?usp=sharing). 
 [Player's Hand Book (en)](https://drive.google.com/file/d/1tkSEsvG8byNiL9hES5vzfCBquUnZ5-Uh/view?usp=sharing)
 
 [Basic Rules](https://dnd.wizards.com/articles/features/basicrules)
