@@ -5,7 +5,7 @@ class DiceRoller {
   }
 
   constructor() {
-    this.name = 'DiceThrower'
+    this.name = 'DiceRoller'
   }
 
   rollDice(diceType) {
