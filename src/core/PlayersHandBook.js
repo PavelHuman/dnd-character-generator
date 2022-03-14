@@ -8,6 +8,9 @@ class PlayersHandBook {
     const sum = firstMaxThree.reduce((acc, current) => acc + current, 0)
     return sum
   }
+  getAbilities() {
+
+  }
 }
 export const phb = new PlayersHandBook()
 
