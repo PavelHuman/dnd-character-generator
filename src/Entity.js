@@ -12,7 +12,7 @@ class Entity {
   }
 
   initAbilities() {
-    this.abilities = {
+    this.getAbilities = {
       strength: null,
       dexterity: null,
       constituion: null,
