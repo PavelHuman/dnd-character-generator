@@ -1,4 +1,4 @@
-import { DwarfMixin, HillDwarfMixin, MountainDwarfMixin } from './dwarf/index.js'
+import { DwarfMixin, dwarvenSubraces } from './dwarf/index.js'
 import Race from './Race.js'
 import { diceRoller } from '../DiceRoller.js'
 
@@ -7,14 +7,7 @@ const getSubraceMixin = (subraces, options) => options.subrace ? subraces[option
 
 export const raceFactory = (race, options) => {
   switch (race) {
-    case 'dwarf': {
-      const subraces = {
-        'hill dwarf': HillDwarfMixin,
-        'mountain dwarf': MountainDwarfMixin,
-      }
-
-      return new (applyMixins(Race, DwarfMixin, getSubraceMixin(subraces, options)))(options)
-    }
+    case 'dwarf': return new (applyMixins(Race, DwarfMixin, getSubraceMixin(dwarvenSubraces, options)))(options)
     default: return {}
   }
 }

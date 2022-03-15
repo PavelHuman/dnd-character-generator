@@ -1,3 +1,8 @@
+import { HillDwarfMixin } from './HillDwarfMixin.js'
+import { MountainDwarfMixin } from './MountainDwarfMixin.js'
+
 export { DwarfMixin } from './DwarfMixin.js'
-export { HillDwarfMixin } from './HillDwarfMixin.js'
-export { MountainDwarfMixin } from './MountainDwarfMixin.js'
+export const dwarvenSubraces = {
+  'hill dwarf': HillDwarfMixin,
+  'mountain dwarf': MountainDwarfMixin,
+}
