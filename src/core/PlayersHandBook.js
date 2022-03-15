@@ -8,6 +8,16 @@ class PlayersHandBook {
     const sum = firstMaxThree.reduce((acc, current) => acc + current, 0)
     return sum
   }
+  getAbilities() {
+    return {
+      strength: null,
+      dexterity: null,
+      constituion: null,
+      intelligence: null,
+      wisdom: null,
+      charisma: null,
+    }
+  }
 }
 export const phb = new PlayersHandBook()
 

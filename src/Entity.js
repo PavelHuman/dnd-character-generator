@@ -12,14 +12,7 @@ class Entity {
   }
 
   initAbilities() {
-    this.abilities = {
-      strength: null,
-      dexterity: null,
-      constituion: null,
-      intelligence: null,
-      wisdom: null,
-      charisma: null,
-    }
+    this.abilities = phb.getAbilities()
   }
 
 
