@@ -1,3 +1,5 @@
+import { diceRoller } from '../DiceRoller.js'
+
 class Race {
   hitPointMaximumIncrease = 0
 
@@ -40,6 +42,10 @@ class Race {
         return acc
       }, {})),
     }
+  }
+
+  initProficiencyTools(tools) {
+    this.proficiency.tools = [diceRoller.rollKeys(tools)]
   }
 }
 

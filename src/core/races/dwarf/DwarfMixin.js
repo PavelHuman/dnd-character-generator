@@ -1,5 +1,3 @@
-import { diceRoller } from '../../DiceRoller.js'
-
 export const DwarfMixin = Race => class Dwarf extends Race {
   speed = 25
 
@@ -19,6 +17,12 @@ export const DwarfMixin = Race => class Dwarf extends Race {
     state: true,
     title: 'Dwarven Combat Training',
     description: 'You have proficiency with the battleaxe, handaxe, light hammer, and warhammer',
+    applyIt: () => {
+      this.proficiency.weapon = [
+        ...this.proficiency.weapon,
+        ...['battleaxe', 'handaxe', 'light hammer', 'warhammer'],
+      ]
+    }
   }
 
 
@@ -32,61 +36,15 @@ export const DwarfMixin = Race => class Dwarf extends Race {
 
   constructor(options = {}) {
     super(options)
+    super.increaseAbilityScore({ constitution: 2 })
+    super.initProficiencyTools([
+      ...(options.proficiencyTool
+        ? [options.proficiencyTool]
+        : ['smith\'s tools', 'brewer\'s supplies', 'mason\'s tools']),
+    ])
 
-    this.increaseAbilityScore({ constitution: 2 })
-
-    this.initProficiencyTools()
-
-    this.applyDwarvenCombatTraining()
-
-    // this.initSubrace(options.subrace)
+    this.dwarvenCombatTraining.applyIt()
   }
 
-  initProficiencyTools() {
-    const tools = ['smith\'s tools', 'brewer\'s supplies', 'mason\'s tools']
-    this.proficiency.tools = [diceRoller.rollKeys(tools)]
-  }
 
-  // initSubrace(subrace) {
-  //   const subraces = {
-  //     'mountain dwarf': () => this.initMountainDwarfSubrace(),
-  //   }
-
-  //   subrace ? subraces[subrace]() : subraces[diceRoller.rollKeys(Object.keys(subraces))]()
-  // }
-
-  initMountainDwarfSubrace() {
-    Object.assign(this, {
-      subrace: 'mountain dwarf',
-      abilityScoreIncrease: {
-        ...this.abilityScoresIncrease,
-        strength: 2,
-      },
-      dwarvenArmorTraining: {
-        state: true,
-        title: 'Dwarven Armor Training',
-        description: 'You have proficiency with light and medium armor.'
-      }
-    })
-
-    this.applyDwarvenArmorTraining()
-  }
-
-  applyDwarvenCombatTraining() {
-    Object.assign(this.proficiency, {
-      weapon: [
-        ...this.proficiency.weapon,
-        ...['battleaxe', 'handaxe', 'light hammer', 'warhammer']
-      ]
-    })
-  }
-
-  applyDwarvenArmorTraining() {
-    Object.assign(this.proficiency, {
-      armor: [
-        ...this.proficiency.armor,
-        ...['light', 'medium'],
-      ],
-    })
-  }
 }
