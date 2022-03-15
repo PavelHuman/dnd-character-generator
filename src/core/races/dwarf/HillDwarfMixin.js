@@ -10,7 +10,7 @@ export const HillDwarfMixin = Dwarf => class HillDwarf extends Dwarf {
   constructor(options = {}) {
     super(options)
 
-    this.initAbilityScoresIncrese({ wisdom: 1 })
+    this.increaseAbilityScore({ wisdom: 1 })
     this.applyDwarvenToughness()
   }
 

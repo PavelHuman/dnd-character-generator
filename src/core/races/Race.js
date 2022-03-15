@@ -7,7 +7,7 @@ class Race {
     armor: [],
   }
 
-  abilityScoresIncrease = {}
+  abilityScoreIncrease = {}
 
   constructor(options = {}) {
     this.initAge(options.age)
@@ -29,13 +29,13 @@ class Race {
     this.size = size
   }
 
-  initAbilityScoresIncrese(abilityScoresToIncrease) {
-    this.abilityScoresIncrease = {
-      ...this.abilityScoresIncrease,
-      ...(Object.entries(abilityScoresToIncrease).reduce((acc, current) => {
+  increaseAbilityScore(abilityScoreToIncrease) {
+    this.abilityScoreIncrease = {
+      ...this.abilityScoreIncrease,
+      ...(Object.entries(abilityScoreToIncrease).reduce((acc, current) => {
         const [ability, value] = current
 
-        acc[ability] = (this.abilityScoresIncrease[ability] || 0) + value
+        acc[ability] = (this.abilityScoreIncrease[ability] || 0) + value
 
         return acc
       }, {})),
