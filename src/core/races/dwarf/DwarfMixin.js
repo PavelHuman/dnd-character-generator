@@ -1,7 +1,7 @@
 import { diceRoller } from '../../DiceRoller.js'
 
 export const DwarfMixin = Race => class Dwarf extends Race {
-  abilityScoreIncrease = {
+  abilityScoresIncrease = {
     constitution: 2,
   }
 
@@ -40,7 +40,7 @@ export const DwarfMixin = Race => class Dwarf extends Race {
 
     this.applyDwarvenCombatTraining()
 
-    this.initSubrace(options.subrace)
+    // this.initSubrace(options.subrace)
   }
 
   initProficiencyTools() {
@@ -48,37 +48,37 @@ export const DwarfMixin = Race => class Dwarf extends Race {
     this.proficiency.tools = [diceRoller.rollKeys(tools)]
   }
 
-  initSubrace(subrace) {
-    const subraces = {
-      'hill dwarf': () => this.initHillDwarfSubrace(),
-      'mountain dwarf': () => this.initMountainDwarfSubrace(),
-    }
+  // initSubrace(subrace) {
+  //   const subraces = {
+  //     // 'hill dwarf': () => this.initHillDwarfSubrace(),
+  //     'mountain dwarf': () => this.initMountainDwarfSubrace(),
+  //   }
 
-    subrace ? subraces[subrace]() : subraces[diceRoller.rollKeys(Object.keys(subraces))]()
-  }
+  //   subrace ? subraces[subrace]() : subraces[diceRoller.rollKeys(Object.keys(subraces))]()
+  // }
 
-  initHillDwarfSubrace() {
-    Object.assign(this, {
-      subrace: 'hill dwarf',
-      abilityScoreIncrease: {
-        ...this.abilityScoreIncrease,
-        wisdom: 1,
-      },
-      dwarvenToughness: {
-        state: true,
-        title: 'Dwarven Toughness',
-        description: 'Your hit point maximum increases by 1, and it increases by 1 every time you gain a level.'
-      }
-    })
+  // initHillDwarfSubrace() {
+  //   Object.assign(this, {
+  //     subrace: 'hill dwarf',
+  //     abilityScoreIncrease: {
+  //       ...this.abilityScoreIncrease,
+  //       wisdom: 1,
+  //     },
+  //     dwarvenToughness: {
+  //       state: true,
+  //       title: 'Dwarven Toughness',
+  //       description: 'Your hit point maximum increases by 1, and it increases by 1 every time you gain a level.'
+  //     }
+  //   })
 
-    this.applyDwarvenToughness()
-  }
+  //   this.applyDwarvenToughness()
+  // }
 
   initMountainDwarfSubrace() {
     Object.assign(this, {
       subrace: 'mountain dwarf',
       abilityScoreIncrease: {
-        ...this.abilityScoreIncrease,
+        ...this.abilityScoresIncrease,
         strength: 2,
       },
       dwarvenArmorTraining: {
@@ -100,11 +100,11 @@ export const DwarfMixin = Race => class Dwarf extends Race {
     })
   }
 
-  applyDwarvenToughness() {
-    Object.assign(this, {
-      hitPointMaximumIncrease: this.hitPointMaximumIncrease + 1
-    })
-  }
+  // applyDwarvenToughness() {
+  //   Object.assign(this, {
+  //     hitPointMaximumIncrease: this.hitPointMaximumIncrease + 1
+  //   })
+  // }
 
   applyDwarvenArmorTraining() {
     Object.assign(this.proficiency, {
