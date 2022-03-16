@@ -4,7 +4,7 @@
   "description": "D&D character generator.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "lint": "eslint '**/*.js'",
     "lint:fix": "npm run lint -- --fix"
   },
@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/PavelHuman/dnd-character-generator#readme",
   "devDependencies": {
-    "eslint": "^8.11.0"
+    "eslint": "^8.11.0",
+    "jest": "^27.5.1"
   }
 }
