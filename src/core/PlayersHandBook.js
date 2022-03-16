@@ -23,16 +23,6 @@ class PlayersHandBook {
   getRacialTraits(race, options) {
     return raceFactory(race, options)
   }
-  getAbilities() {
-    return {
-      strength: null,
-      dexterity: null,
-      constituion: null,
-      intelligence: null,
-      wisdom: null,
-      charisma: null,
-    }
-  }
 }
 
 export const phb = new PlayersHandBook()
