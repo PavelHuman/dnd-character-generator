@@ -17,12 +17,12 @@ class Dwarf {
   darkvision = {
     state: true,
     description: 'Accustomed to life underground, uoy have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You cant discern color in darkness, only shades of gray.',
-    title: 'Darkvision'
+    title: 'Darkvision',
   }
 
   dwarvenResilience = {
     state: true,
-    description: 'You have advantage on saving throws against poison, and you have resistance against poison damage (explained in chapter 9, "Combat")'
+    description: 'You have advantage on saving throws against poison, and you have resistance against poison damage (explained in chapter 9, "Combat")',
   }
 
   dwarvenCombatTraining = true
