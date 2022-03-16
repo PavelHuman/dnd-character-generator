@@ -1,3 +1,5 @@
+import { diceRoller } from '../DiceRoller.js'
+
 class Race {
   hitPointMaximumIncrease = 0
 
@@ -6,6 +8,8 @@ class Race {
     weapon: [],
     armor: [],
   }
+
+  abilityScoreIncrease = {}
 
   constructor(options = {}) {
     this.initAge(options.age)
@@ -25,6 +29,23 @@ class Race {
 
   initSize(size) {
     this.size = size
+  }
+
+  increaseAbilityScore(abilityScoreToIncrease) {
+    this.abilityScoreIncrease = {
+      ...this.abilityScoreIncrease,
+      ...(Object.entries(abilityScoreToIncrease).reduce((acc, current) => {
+        const [ability, value] = current
+
+        acc[ability] = (this.abilityScoreIncrease[ability] || 0) + value
+
+        return acc
+      }, {})),
+    }
+  }
+
+  initProficiencyTools(tools) {
+    this.proficiency.tools = [diceRoller.rollKeys(tools)]
   }
 }
 
