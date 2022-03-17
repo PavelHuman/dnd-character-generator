@@ -25,7 +25,7 @@ class Dwarf {
     description: 'You have advantage on saving throws against poison, and you have resistance against poison damage (explained in chapter 9, "Combat")',
   }
 
-  dwarvenCombatTraining = true
+  dwarvenCombatTraining = { title: 'Dwarven Combat Training', weapon: ['battle ax', 'hand ax', 'light hammer', 'war hammer'] }
 
   proficiency = {
     tools: ['blacksmith'],
@@ -36,7 +36,6 @@ class Dwarf {
     description: 'Whenever you make an Intelligence History check related to the origin of stonework, you are considered proficient in the History skill and add double your proficiency bonus to the check, instead of your normal proficiency bonus',
   }
 
-  subrace
 
   dwarvenToughness
 
