@@ -106,11 +106,14 @@ const testTrait = trait => {
     testTraitExisting(trait)
     testTraitType(trait)
 
-    if (trait.type.name === 'proficiency') {
+    if (trait.name === 'proficiency') {
+      console.log(trait)
       const expectedWeapon = ['battleaxe', 'handaxe', 'light hammer', 'warhammer']
-      expect(dwarf.proficiency.weapon).toEqual(
-        expect.arrayContaining(expectedWeapon),
-      )
+      test(`shoule contains expected Weapon: ${expectedWeapon}`, () => {
+        expect(dwarf.proficiency.weapon).toEqual(
+          expect.arrayContaining(expectedWeapon),
+        )
+      })
     }
   })
 }
