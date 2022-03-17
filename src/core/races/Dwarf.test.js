@@ -21,12 +21,11 @@ const proficiencyTrait = {
 }
 
 const traitTypes = {
-  effect: { name: 'effect', value: sideEffectTrait },
-  pure: { name: 'pure', value: pureTrait },
   array: { name: 'array', value: expect.any(Array) },
   number: { name: 'number', value: expect.any(Number) },
   string: { name: 'string', value: expect.any(String) },
-  fn: { name: 'fn', value: expect.any(Function) },
+  effect: { name: 'effect', value: sideEffectTrait },
+  pure: { name: 'pure', value: pureTrait },
   proficiency: { name: 'proficiency', value: proficiencyTrait },
 }
 
@@ -51,6 +50,10 @@ const commonTraits = [
     name: 'alignment',
     type: traitTypes.string,
   },
+  {
+    name: 'proficiency',
+    type: traitTypes.proficiency,
+  },
 ]
 
 const specificTraits = [
@@ -72,15 +75,6 @@ const specificTraits = [
   },
 ]
 
-const testTraitsContaining = traitType => traits => {
-  traits.forEach(trait => {
-    expect(dwarf[trait]).toEqual(expect.objectContaining(traitType))
-  })
-}
-
-const testPureTraitsContaining = testTraitsContaining(pureTrait)
-const testSideEffectsTraitsContaining = testTraitsContaining(sideEffectTrait)
-
 const testTraitExisting = trait => {
   test('should exist', () => {
     expect(dwarf).toHaveProperty(trait.name)
@@ -92,6 +86,7 @@ const testTraitType = trait => {
     switch (trait.type.name) {
       case 'number':
       case 'string':
+      case 'proficiency':
       case 'pure':
       case 'effect': {
         expect(dwarf[trait.name]).toEqual(trait.type.value)
@@ -110,6 +105,13 @@ const testTrait = trait => {
   describe(`trait ${trait.name}`, () => {
     testTraitExisting(trait)
     testTraitType(trait)
+
+    if (trait.type.name === 'proficiency') {
+      const expectedWeapon = ['battleaxe', 'handaxe', 'light hammer', 'warhammer']
+      expect(dwarf.proficiency.weapon).toEqual(
+        expect.arrayContaining(expectedWeapon),
+      )
+    }
   })
 }
 
@@ -118,17 +120,5 @@ describe('Dwarf', () => {
     ...commonTraits,
     ...specificTraits,
   ].forEach(testTrait)
-
-
-  // test('should have proficiency prop', () => {
-  //   expect(dwarf).toHaveProperty('proficiency')
-
-  // const expectedWeapon = ['battleaxe', 'handaxe', 'light hammer', 'warhammer']
-  // expect(dwarf.proficiency.weapon).toEqual(
-  //   expect.arrayContaining(expectedWeapon),
-  // )
-  // })
-
-
 })
 
