@@ -1,4 +1,4 @@
-class Dwarf {
+export class Dwarf {
 
   abilityScoreIncrease = { constitution: 2 }
 

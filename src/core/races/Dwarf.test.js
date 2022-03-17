@@ -1,8 +1,134 @@
-import { dwarf } from './Dwarf.js'
+import { Dwarf } from './Dwarf.js'
 
-test('should has dwarvenResilience property', () => {
-  expect(dwarf).toHaveProperty('dwarvenResilience')
+// 5. добавить чертам, которые влияют на какие-то параметры метод applyIt в котором будут применяться эти параметры. Вызывать метод applyIt в конструкторе класса Dwarf #38
+const dwarf = new Dwarf()
+
+const pureTrait = {
+  state: expect.any(Boolean),
+  title: expect.any(String),
+  description: expect.any(String),
+}
+
+const sideEffectTrait = {
+  ...pureTrait,
+  applyIt: expect.any(Function),
+}
+
+const proficiencyTrait = {
+  tools: expect.any(Array),
+  weapon: expect.any(Array),
+  armor: expect.any(Array),
+}
+
+const traitTypes = {
+  effect: { name: 'effect', value: sideEffectTrait },
+  pure: { name: 'pure', value: pureTrait },
+  array: { name: 'array', value: expect.any(Array) },
+  number: { name: 'number', value: expect.any(Number) },
+  string: { name: 'string', value: expect.any(String) },
+  fn: { name: 'fn', value: expect.any(Function) },
+  proficiency: { name: 'proficiency', value: proficiencyTrait },
+}
+
+const commonTraits = [
+  {
+    name: 'languages',
+    type: { name: 'array', value: traitTypes.array },
+  },
+  {
+    name: 'size',
+    type: traitTypes.number,
+  },
+  {
+    name: 'speed',
+    type: traitTypes.number,
+  },
+  {
+    name: 'age',
+    type: traitTypes.number,
+  },
+  {
+    name: 'alignment',
+    type: traitTypes.string,
+  },
+]
+
+const specificTraits = [
+  {
+    name: 'dwarvenCombatTraining',
+    type: traitTypes.effect,
+  },
+  {
+    name: 'darkvision',
+    type: traitTypes.pure,
+  },
+  {
+    name: 'dwarvenResilience',
+    type: traitTypes.pure,
+  },
+  {
+    name: 'stonecunning',
+    type: traitTypes.pure,
+  },
+]
+
+const testTraitsContaining = traitType => traits => {
+  traits.forEach(trait => {
+    expect(dwarf[trait]).toEqual(expect.objectContaining(traitType))
+  })
+}
+
+const testPureTraitsContaining = testTraitsContaining(pureTrait)
+const testSideEffectsTraitsContaining = testTraitsContaining(sideEffectTrait)
+
+const testTraitExisting = trait => {
+  test('should exist', () => {
+    expect(dwarf).toHaveProperty(trait.name)
+  })
+}
+
+const testTraitType = trait => {
+  test(`should be ${trait.type.name}`, () => {
+    switch (trait.type.name) {
+      case 'number':
+      case 'string':
+      case 'pure':
+      case 'effect': {
+        expect(dwarf[trait.name]).toEqual(trait.type.value)
+        break
+      }
+      case 'array': {
+        expect(Array.isArray(dwarf[trait.name])).toEqual(true)
+        break
+      }
+      default: return null
+    }
+  })
+}
+
+const testTrait = trait => {
+  describe(`trait ${trait.name}`, () => {
+    testTraitExisting(trait)
+    testTraitType(trait)
+  })
+}
+
+describe('Dwarf', () => {
+  [
+    ...commonTraits,
+    ...specificTraits,
+  ].forEach(testTrait)
+
+
+  // test('should have proficiency prop', () => {
+  //   expect(dwarf).toHaveProperty('proficiency')
+
+  // const expectedWeapon = ['battleaxe', 'handaxe', 'light hammer', 'warhammer']
+  // expect(dwarf.proficiency.weapon).toEqual(
+  //   expect.arrayContaining(expectedWeapon),
+  // )
+  // })
+
+
 })
-test('should has darkvision property', () => {
-  expect(dwarf).toHaveProperty('darkvision')
-})
+
