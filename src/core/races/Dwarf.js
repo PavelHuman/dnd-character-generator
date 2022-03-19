@@ -35,7 +35,7 @@ export class Dwarf {
 
   dwarvenCombatTraining = {
 
-    applyIt: function () { },
+    applyIt() { },
 
     state: true,
 

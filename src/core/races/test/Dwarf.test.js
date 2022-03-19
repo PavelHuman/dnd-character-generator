@@ -1,7 +1,9 @@
-import { Dwarf } from './Dwarf.js'
+import { Dwarf } from '../Dwarf.js'
 
 // 5. добавить чертам, которые влияют на какие-то параметры метод applyIt в котором будут применяться эти параметры. Вызывать метод applyIt в конструкторе класса Dwarf #38
 const dwarf = new Dwarf()
+
+console.log(dwarf.proficiency.weapon)
 
 const pureTrait = {
   state: expect.any(Boolean),
@@ -60,6 +62,23 @@ const specificTraits = [
   {
     name: 'dwarvenCombatTraining',
     type: traitTypes.effect,
+    testEffect() {
+      describe(`${this.name} effect`, () => {
+        test('should add expeceted weapon to proficency property', () => {
+          const dwarfMockedInstance = {
+            proficiency: {
+              weapon: [],
+            },
+          }
+          dwarf[this.name].applyIt.call(dwarfMockedInstance)
+
+          const expectedWeapon = ['battleaxe', 'handaxe', 'light hammer', 'warhammer']
+          expect(dwarfMockedInstance.proficiency.weapon).toEqual(
+            expect.arrayContaining(expectedWeapon),
+          )
+        })
+      })
+    },
   },
   {
     name: 'darkvision',
@@ -101,17 +120,20 @@ const testTraitType = trait => {
   })
 }
 
+
 const testTrait = trait => {
   describe(`trait ${trait.name}`, () => {
     testTraitExisting(trait)
     testTraitType(trait)
 
+    if (trait.type.name === 'effect') trait.testEffect()
+
     if (trait.name === 'proficiency') {
-      const expectedWeapon = ['battleaxe', 'handaxe', 'light hammer', 'warhammer']
-      test(`shoule contains expected Weapon: ${expectedWeapon}`, () => {
-        expect(dwarf.proficiency.weapon).toEqual(
-          expect.arrayContaining(expectedWeapon),
-        )
+      test('should contains unique items as values', () => {
+        Object.values(dwarf.proficiency).forEach(value => {
+          const unique = value.filter((item, i) => value.indexOf(item) === i)
+          expect(value).toEqual(unique)
+        })
       })
     }
   })
