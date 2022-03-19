@@ -3,8 +3,6 @@ import { Dwarf } from '../Dwarf.js'
 // 5. добавить чертам, которые влияют на какие-то параметры метод applyIt в котором будут применяться эти параметры. Вызывать метод applyIt в конструкторе класса Dwarf #38
 const dwarf = new Dwarf()
 
-console.log(dwarf.proficiency.weapon)
-
 const pureTrait = {
   state: expect.any(Boolean),
   title: expect.any(String),
@@ -49,12 +47,24 @@ const commonTraits = [
     type: traitTypes.number,
   },
   {
+    name: 'hitPointMaximumIncrease',
+    type: traitTypes.number,
+  },
+  {
     name: 'alignment',
     type: traitTypes.string,
   },
   {
     name: 'proficiency',
     type: traitTypes.proficiency,
+    test() {
+      test('should contains unique items as values', () => {
+        Object.values(dwarf.proficiency).forEach(value => {
+          const unique = value.filter((item, i) => value.indexOf(item) === i)
+          expect(value).toEqual(unique)
+        })
+      })
+    },
   },
 ]
 
@@ -62,7 +72,7 @@ const specificTraits = [
   {
     name: 'dwarvenCombatTraining',
     type: traitTypes.effect,
-    testEffect() {
+    test() {
       describe(`${this.name} effect`, () => {
         test('should add expeceted weapon to proficency property', () => {
           const dwarfMockedInstance = {
@@ -75,6 +85,45 @@ const specificTraits = [
           const expectedWeapon = ['battleaxe', 'handaxe', 'light hammer', 'warhammer']
           expect(dwarfMockedInstance.proficiency.weapon).toEqual(
             expect.arrayContaining(expectedWeapon),
+          )
+        })
+      })
+    },
+  },
+  {
+    name: 'dwarvenToughness',
+    type: traitTypes.effect,
+    test() {
+      describe(`${this.name} effect`, () => {
+        test('should add expeceted increase hit point maximum by 1', () => {
+          const dwarfMockedInstance = {
+            hitPointMaximumIncrease: 0,
+          }
+
+          dwarf[this.name].applyIt.call(dwarfMockedInstance)
+
+          expect(dwarfMockedInstance.hitPointMaximumIncrease).toEqual(dwarf.hitPointMaximumIncrease)
+        })
+      })
+    },
+  },
+  {
+    name: 'dwarvenArmorTraining',
+    type: traitTypes.effect,
+    test() {
+      console.log(dwarf.proficiency)
+      describe(`${this.name} effect`, () => {
+        test('should add expeceted armor to proficency property', () => {
+          const dwarfMockedInstance = {
+            proficiency: {
+              armor: [],
+            },
+          }
+          dwarf[this.name].applyIt.call(dwarfMockedInstance)
+
+          const expectedArmor = ['light', 'medium']
+          expect(dwarfMockedInstance.proficiency.armor).toEqual(
+            expect.arrayContaining(expectedArmor),
           )
         })
       })
@@ -126,18 +175,11 @@ const testTrait = trait => {
     testTraitExisting(trait)
     testTraitType(trait)
 
-    if (trait.type.name === 'effect') trait.testEffect()
-
-    if (trait.name === 'proficiency') {
-      test('should contains unique items as values', () => {
-        Object.values(dwarf.proficiency).forEach(value => {
-          const unique = value.filter((item, i) => value.indexOf(item) === i)
-          expect(value).toEqual(unique)
-        })
-      })
-    }
+    trait?.test?.()
   })
 }
+
+console.log(Dwarf)
 
 describe('Dwarf', () => {
   [

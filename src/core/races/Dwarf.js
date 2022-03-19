@@ -1,6 +1,4 @@
 export class Dwarf {
-
-
   abilityScoreIncrease = { constitution: 2 }
 
   age = 200
