@@ -1,5 +1,6 @@
 export class Dwarf {
 
+
   abilityScoreIncrease = { constitution: 2 }
 
   age = 200
@@ -66,6 +67,10 @@ export class Dwarf {
   dwarvenToughness
 
   dwarvenArmorTraining
+
+  constructor() {
+    this.dwarvenCombatTraining.applyIt()
+  }
 
 }
 export const dwarf = new Dwarf()
