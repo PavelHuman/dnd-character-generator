@@ -1,7 +1,12 @@
 export class Dwarf {
+
   abilityScoreIncrease = { constitution: 2 }
 
+  arrayContaining = ['light', 'medium']
+
   age = 200
+
+  hitPointMaximumIncrease = 0
 
   alignment = 'fair'
 
@@ -28,12 +33,17 @@ export class Dwarf {
 
     state: true,
 
-    description: 'You have advantage on saving throws against poison, and you have resistance against poison damage (explained in chapter 9, "Combat")',
+    description: 'You have advantage on saving throws against poison, and you have resistance against pzoison damage (explained in chapter 9, "Combat")',
   }
 
   dwarvenCombatTraining = {
 
-    applyIt() { },
+    applyIt() {
+      const weapon = ['battleaxe', 'handaxe', 'light hammer', 'warhammer']
+      this.proficiency.weapon = weapon
+
+    },
+
 
     state: true,
 
@@ -47,9 +57,9 @@ export class Dwarf {
 
     tools: ['blacksmith'],
 
-    armor: ['chainmail'],
+    armor: [],
 
-    weapon: ['battleaxe', 'handaxe', 'light hammer', 'warhammer'],
+    weapon: [],
   }
 
   stonecunning = {
@@ -62,12 +72,32 @@ export class Dwarf {
   }
 
 
-  dwarvenToughness
+  dwarvenToughness = {
+    applyIt: function () {
+      const toughness = 0
+      for (let i = 0; i < 3; i++) {
+        return toughness
+      }
+      this.hitPointMaximumIncrease = toughness
+    },
 
-  dwarvenArmorTraining
+    description: ' Your hit point maximum increases by 1, and it increases by 1 every time you gain a level.', state: true, title: 'Dwarven Toughness',
+  }
+
+  dwarvenArmorTraining = {
+
+    applyIt: function () {
+      const expectedArmor = ['light', 'medium']
+      this.proficiency.armor = expectedArmor
+    },
+
+    description: 'You have proficiency with light and medium armor', state: true, title: 'Dwarven Armor Training.'
+  }
 
   constructor() {
-    this.dwarvenCombatTraining.applyIt()
+    this.dwarvenCombatTraining.applyIt.call(this)
+    this.dwarvenToughness.applyIt.call(this)
+    this.dwarvenArmorTraining.applyIt.call(this)
   }
 
 }
