@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
+    "test:coverage": "jest --collectCoverage",
     "lint": "eslint '**/*.js'",
     "lint:fix": "npm run lint -- --fix"
   },
@@ -20,6 +21,7 @@
   },
   "homepage": "https://github.com/PavelHuman/dnd-character-generator#readme",
   "devDependencies": {
+    "@babel/preset-env": "^7.16.11",
     "eslint": "^8.11.0",
     "jest": "^27.5.1"
   }
