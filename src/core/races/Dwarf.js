@@ -55,10 +55,7 @@ export class Dwarf {
 
   dwarvenToughness = {
     applyIt: function () {
-      const toughness = 0
-      for (let i = 0; i < 3; i++) {
-        return toughness
-      }
+      typeof this.hitPointMaximumIncrease === 'number'
     },
     description: ' Your hit point maximum increases by 1, and it increases by 1 every time you gain a level.', state: true, title: 'Dwarven Toughness',
   }
