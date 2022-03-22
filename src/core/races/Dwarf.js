@@ -65,7 +65,7 @@ export class Dwarf {
       const expectedArmor = ['light', 'medium']
       this.proficiency.armor = expectedArmor
     },
-    description: 'You have proficiency with light and medium armor', state: true, title: 'Dwarven Armor Training.'
+    description: 'You have proficiency with light and medium armor', state: true, title: 'Dwarven Armor Training.',
   }
 
   constructor() {
