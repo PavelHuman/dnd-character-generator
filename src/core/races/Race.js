@@ -21,7 +21,7 @@ export class Race {
   }
 
   initAge(age) {
-    this.age = age ?? 18 + Math.random() * (450 - 18)
+    this.age = age ?? 18
   }
 }
 
