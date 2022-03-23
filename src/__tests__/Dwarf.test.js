@@ -1,4 +1,4 @@
-import { Dwarf } from '../Dwarf.js'
+import { Dwarf } from '../core/races/Dwarf.js'
 
 // 5. добавить чертам, которые влияют на какие-то параметры метод applyIt в котором будут применяться эти параметры. Вызывать метод applyIt в конструкторе класса Dwarf #38
 const dwarf = new Dwarf()
@@ -111,7 +111,7 @@ const specificTraits = [
     name: 'dwarvenArmorTraining',
     type: traitTypes.effect,
     test() {
-      console.log(dwarf.proficiency)
+      // console.log(dwarf.proficiency)
       describe(`${this.name} effect`, () => {
         test('should add expeceted armor to proficency property', () => {
           const dwarfMockedInstance = {
@@ -179,7 +179,7 @@ const testTrait = trait => {
   })
 }
 
-console.log(Dwarf)
+// console.log(Dwarf)
 
 describe('Dwarf', () => {
   [
