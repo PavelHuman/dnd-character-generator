@@ -7,7 +7,7 @@ export class Race {
     type: '',
     value: 0,
   }
-
+  abilityScoreIncrease = { constitution: 2 }
   languages = []
   subraces = []
   proficiency = {
@@ -21,6 +21,7 @@ export class Race {
     this.initAge(options.age)
     this.initSize(options.size)
     this.initAlignment(options.alignment)
+    this.initAbilityScoreIncrease(options.abilityScoreIncrease)
   }
 
   initAge(age) {
@@ -35,13 +36,19 @@ export class Race {
     }
   }
   initProficiency(proficiency) {
-
+    this.proficiency.tools = proficiency
+    this.proficiency.weapon = proficiency
+    this.proficiency.armor = proficiency
   }
   initAlignment(alignment) {
+    let array = ['neutralGood', 'chaoticGood', 'lawfulNeutral', 'neutral', 'chaoticNeutral', 'lawfulEvil', 'neutralEvil', 'chaoticEvil']
+    if (this.alignment == '') {
+      this.alignment = alignment ?? '' + array[Math.floor(Math.random() * array.length)]
+    }
+  }
+  initAbilityScoreIncrease(abilityScoreIncrease) {
 
   }
 }
 
-
 export const race = new Race()
-console.log({ race })
