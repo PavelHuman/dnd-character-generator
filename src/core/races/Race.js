@@ -5,7 +5,7 @@ export class Race {
 
   alignment = 'neutral'
 
-  speed = 25
+  speed = 0
 
   size = {
     type: '',

@@ -1,17 +1,6 @@
-export class Dwarf {
+import { Race } from './Race.js'
 
-  abilityScoreIncrease = { constitution: 2 }
-
-  arrayContaining = ['light', 'medium']
-
-  age = 200
-
-  hitPointMaximumIncrease = 0
-
-  alignment = 'fair'
-
-  size = 140
-
+export class Dwarf extends Race {
   speed = 25
 
   languages = ['common', 'dwarvish']
@@ -40,12 +29,6 @@ export class Dwarf {
     description: 'You have proficiency with the battleaxe, handaxe, light hammer, and warhammer.',
   }
 
-  proficiency = {
-    tools: ['blacksmith'],
-    armor: [],
-    weapon: [],
-  }
-
   stonecunning = {
     title: 'Stonecunning.',
     state: true,
@@ -61,14 +44,20 @@ export class Dwarf {
   }
 
   dwarvenArmorTraining = {
+    title: 'Dwarven Armor Training.',
+    state: true,
+    description: 'You have proficiency with light and medium armor',
     applyIt: function () {
-      const expectedArmor = ['light', 'medium']
-      this.proficiency.armor = expectedArmor
+      const armorProficiency = ['light', 'medium']
+      this.proficiency.armor = armorProficiency
     },
-    description: 'You have proficiency with light and medium armor', state: true, title: 'Dwarven Armor Training.',
   }
 
-  constructor() {
+  constructor(options = {}) {
+    super(options)
+
+    super.increaseAbilityScore({ constitution: 2 })
+
     this.dwarvenCombatTraining.applyIt.call(this)
     this.dwarvenToughness.applyIt.call(this)
     this.dwarvenArmorTraining.applyIt.call(this)
