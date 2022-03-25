@@ -1,15 +1,23 @@
 export class Race {
   age = 0
+
   hitPointMaximumIncrease = 0
-  alignment = ''
+
+  alignment = 'neutral'
+
   speed = 25
+
   size = {
     type: '',
     value: 0,
   }
-  abilityScoreIncrease = { constitution: 2 }
+
+  abilityScoreIncrease = {}
+
   languages = []
+
   subraces = []
+
   proficiency = {
     tools: [],
     weapon: [],
@@ -17,17 +25,24 @@ export class Race {
   }
 
   constructor(options = {}) {
-    this.initProficiency(options.proficiency)
     this.initAge(options.age)
     this.initSize(options.size)
     this.initAlignment(options.alignment)
-    this.initAbilityScoreIncrease(options.abilityScoreIncrease)
+    this.increaseAbilityScore(options.abilityScoreIncrease)
   }
 
   initAge(age) {
-    if (this.age <= 49) {
-      this.age = age ?? 50 + Math.ceil(Math.random() * (400 - 50))
+    function getRangomAge() {
+      return 50 + Math.ceil(Math.random() * (400 - 50))
     }
+
+    if (age) {
+      this.age = age < 50 ? getRangomAge() : age
+
+      return
+    }
+
+    this.age = getRangomAge()
   }
 
   initSize(size) {
@@ -35,19 +50,23 @@ export class Race {
       this.size.value = size ?? 66 + Math.ceil(Math.random() * (244 - 66))
     }
   }
-  initProficiency(proficiency) {
-    this.proficiency.tools = proficiency
-    this.proficiency.weapon = proficiency
-    this.proficiency.armor = proficiency
-  }
-  initAlignment(alignment) {
-    let array = ['neutralGood', 'chaoticGood', 'lawfulNeutral', 'neutral', 'chaoticNeutral', 'lawfulEvil', 'neutralEvil', 'chaoticEvil']
-    if (this.alignment == '') {
-      this.alignment = alignment ?? '' + array[Math.floor(Math.random() * array.length)]
-    }
-  }
-  initAbilityScoreIncrease(abilityScoreIncrease) {
 
+  initAlignment(alignment) {
+    const alignments = ['neutralGood', 'chaoticGood', 'lawfulNeutral', 'neutral', 'chaoticNeutral', 'lawfulEvil', 'neutralEvil', 'chaoticEvil']
+
+    this.alignment = alignment ?? alignments[Math.floor(Math.random() * alignments.length)]
+  }
+
+  increaseAbilityScore(abilityToIncrease = {}) {
+    Object.entries(abilityToIncrease).forEach(([key, value]) => {
+      if (this.abilityScoreIncrease[key]) {
+        this.abilityScoreIncrease[key] = this.abilityScoreIncrease[key] + value
+
+        return
+      }
+
+      this.abilityScoreIncrease[key] = value
+    })
   }
 }
 
