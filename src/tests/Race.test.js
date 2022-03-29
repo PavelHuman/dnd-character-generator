@@ -162,9 +162,6 @@ testInstance({
     name: 'race',
     value: race,
   },
-  constructorFn: {
-    name: 'Race',
-    value: Race,
-  },
+  constructors: [Race],
   traits,
 })

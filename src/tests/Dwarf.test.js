@@ -1,4 +1,5 @@
 import { Dwarf } from '../core/races/Dwarf.js'
+import { Race } from '../core/races/Race.js'
 import { testInstance } from './utils.js'
 
 const dwarf = new Dwarf()
@@ -94,9 +95,6 @@ testInstance({
     name: 'dwarf',
     value: dwarf,
   },
-  constructorFn: {
-    name: 'Dwarf',
-    value: Dwarf,
-  },
+  constructors: [Dwarf, Race],
   traits,
 })

@@ -6,12 +6,14 @@ export function shouldTraitExist(instance, trait) {
 
 export function testInstance({
   instance,
-  constructorFn,
+  constructors,
   traits,
 }) {
   describe(`${instance.name}`, () => {
-    test(`should be instance of ${constructorFn.name}`, () => {
-      expect(instance.value).toBeInstanceOf(constructorFn.value)
+    constructors.forEach(constructorFn => {
+      test(`should be instance of ${constructorFn.name}`, () => {
+        expect(instance.value).toBeInstanceOf(constructorFn)
+      })
     })
 
     traits.forEach(trait => {
