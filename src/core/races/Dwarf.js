@@ -56,7 +56,7 @@ export class Dwarf extends Race {
   constructor(options = {}) {
     super(options)
 
-    super.increaseAbilityScore({ constitution: 2 })
+    this.abilityScoreIncrease.init({ constitution: 2 })
 
     this.dwarvenCombatTraining.applyIt.call(this)
     this.dwarvenToughness.applyIt.call(this)

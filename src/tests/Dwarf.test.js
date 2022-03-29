@@ -1,7 +1,6 @@
 import { Dwarf } from '../core/races/Dwarf.js'
-import { commonTraits } from './types.js'
+import { testInstance } from './utils.js'
 
-// 5. добавить чертам, которые влияют на какие-то параметры метод applyIt в котором будут применяться эти параметры. Вызывать метод applyIt в конструкторе класса Dwarf #38
 const dwarf = new Dwarf()
 
 const pureTrait = {
@@ -15,7 +14,7 @@ const sideEffectTrait = {
   applyIt: expect.any(Function),
 }
 
-const specificTraits = [
+const traits = [
   {
     name: 'dwarvenCombatTraining',
     type: sideEffectTrait,
@@ -58,7 +57,6 @@ const specificTraits = [
     name: 'dwarvenArmorTraining',
     type: sideEffectTrait,
     test() {
-      // console.log(dwarf.proficiency)
       describe(`${this.name} effect`, () => {
         test('should add expeceted armor to proficency property', () => {
           const dwarfMockedInstance = {
@@ -90,28 +88,15 @@ const specificTraits = [
   },
 ]
 
-const testTraitExisting = trait => {
-  test('should exist', () => {
-    expect(dwarf).toHaveProperty(trait.name, trait.type)
-  })
-}
 
-
-
-function testTrait(trait) {
-  describe(`trait ${trait.name}`, () => {
-    testTraitExisting(trait)
-
-    trait?.test?.()
-  })
-}
-
-// console.log(Dwarf)
-
-describe('Dwarf', () => {
-  [
-    ...commonTraits,
-    ...specificTraits,
-  ].forEach(testTrait)
+testInstance({
+  instance: {
+    name: 'dwarf',
+    value: dwarf,
+  },
+  constructorFn: {
+    name: 'Dwarf',
+    value: Dwarf,
+  },
+  traits,
 })
-
