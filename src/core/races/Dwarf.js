@@ -1,8 +1,6 @@
 import { Race } from './Race.js'
 
 export class Dwarf extends Race {
-  speed = 25
-
   languages = ['common', 'dwarvish']
 
   subraces = ['hill', 'mountain']
@@ -55,7 +53,7 @@ export class Dwarf extends Race {
 
   constructor(options = {}) {
     super(options)
-
+    this.speed.init(25)
     this.abilityScoreIncrease.init({ constitution: 2 })
 
     this.dwarvenCombatTraining.applyIt.call(this)

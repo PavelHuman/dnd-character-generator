@@ -24,6 +24,23 @@ export const traits = [
     type: getInitTrateType({
       value: expect.any(Number),
     }),
+    test() {
+      describe('init', () => {
+        const mockedRace = {
+          speed: {
+            value: 0,
+            init: race.speed.init,
+          },
+        }
+
+        test('should apply received speed value', () => {
+          const speed = 25
+          mockedRace.speed.init(speed)
+
+          expect(mockedRace.speed.value).toBe(speed)
+        })
+      })
+    },
   },
   {
     name: 'age',

@@ -72,6 +72,7 @@ export class Race {
   constructor(options = {}) {
     this.age.init(options.age)
     this.size.init(options.size)
+    this.speed.init(options.speed)
     this.alignment.init(options.alignment)
     this.abilityScoreIncrease.init(options.abilityScoreIncrease)
   }
