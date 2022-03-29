@@ -8,14 +8,26 @@ describe('hillDwarf', () => {
   test('should be instance of HillDwarf', () => {
     expect(hillDwarf).toBeInstanceOf(HillDwarf)
   })
-})
-describe('hillDwarf', () => {
   test('should be instance of Race', () => {
     expect(hillDwarf).toBeInstanceOf(Race)
   })
-})
-describe('hillDwarf', () => {
   test('should be instance of Dwarf', () => {
     expect(hillDwarf).toBeInstanceOf(Dwarf)
   })
 })
+
+
+
+
+
+describe('hillDwarf', () => {
+
+})
+
+
+describe('hillDwarf', () => {
+  test('should be metmethod of abilityScoreIncrease', () => {
+
+  })
+})
+
