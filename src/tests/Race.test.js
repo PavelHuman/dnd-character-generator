@@ -1,6 +1,6 @@
 import { Race } from '../core/races/Race.js'
 import { commonTraits } from './types.js'
-
+import { shoMetEx } from './utils.js'
 const race = new Race()
 
 describe('race', () => {
@@ -15,7 +15,7 @@ describe('race', () => {
   })
 
   describe('initAge', () => {
-    shouldMethodExist('initAge')
+    shoMetEx.shouldMethodExist('initAge')
 
     const mockedRace = {
       age: 0,
@@ -39,7 +39,7 @@ describe('race', () => {
   })
 
   describe('increaseAbilityScore', () => {
-    shouldMethodExist('increaseAbilityScore')
+    shoMetEx.shouldMethodExist('increaseAbilityScore')
 
     test('should increase ability', () => {
       const mockedRace = {
@@ -63,7 +63,7 @@ describe('race', () => {
   })
 
   describe('initAlignment', () => {
-    shouldMethodExist('initAlignment')
+    shoMetEx.shouldMethodExist('initAlignment')
 
     const alignments = ['neutralGood', 'chaoticGood', 'lawfulNeutral', 'neutral', 'chaoticNeutral', 'lawfulEvil', 'neutralEvil', 'chaoticEvil']
 
@@ -86,13 +86,4 @@ describe('race', () => {
     })
 
   })
-
-
 })
-
-
-function shouldMethodExist(prop) {
-  test('should exist', () => {
-    expect(race).toHaveProperty(prop, expect.any(Function))
-  })
-}
