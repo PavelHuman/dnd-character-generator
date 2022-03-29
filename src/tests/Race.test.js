@@ -1,11 +1,8 @@
 import { Race } from '../core/races/Race.js'
-import { testInstance } from './utils.js'
+import { testInstance, getInitTrateType } from './utils.js'
 const race = new Race()
 
-const getInitTrateType = typeObject => expect.objectContaining({
-  ...typeObject,
-  init: expect.any(Function),
-})
+
 
 export const traits = [
   {
