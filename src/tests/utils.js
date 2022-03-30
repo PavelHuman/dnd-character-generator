@@ -26,7 +26,7 @@ export function testInstance({
 
 }
 
-export const getInitTrateType = typeObject => expect.objectContaining({
+export const getInitTraiteType = typeObject => expect.objectContaining({
   ...typeObject,
   init: expect.any(Function),
 })

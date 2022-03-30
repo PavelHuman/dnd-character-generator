@@ -1,19 +1,9 @@
 import { Dwarf } from '../core/races/Dwarf.js'
 import { Race } from '../core/races/Race.js'
 import { testInstance } from './utils.js'
+import { sideEffectTrait, pureTrait } from './types.js'
 
 const dwarf = new Dwarf()
-
-const pureTrait = {
-  state: expect.any(Boolean),
-  title: expect.any(String),
-  description: expect.any(String),
-}
-
-const sideEffectTrait = {
-  ...pureTrait,
-  applyIt: expect.any(Function),
-}
 
 const traits = [
   {
@@ -33,23 +23,6 @@ const traits = [
           expect(dwarfMockedInstance.proficiency.weapon).toEqual(
             expect.arrayContaining(expectedWeapon),
           )
-        })
-      })
-    },
-  },
-  {
-    name: 'dwarvenToughness',
-    type: sideEffectTrait,
-    test() {
-      describe(`${this.name} effect`, () => {
-        test('should add expeceted increase hit point maximum by 1', () => {
-          const dwarfMockedInstance = {
-            hitPointMaximumIncrease: 0,
-          }
-
-          dwarf[this.name].applyIt.call(dwarfMockedInstance)
-
-          expect(dwarfMockedInstance.hitPointMaximumIncrease).toEqual(dwarf.hitPointMaximumIncrease)
         })
       })
     },

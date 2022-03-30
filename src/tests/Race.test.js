@@ -1,5 +1,5 @@
 import { Race } from '../core/races/Race.js'
-import { testInstance, getInitTrateType } from './utils.js'
+import { testInstance, getInitTraiteType } from './utils.js'
 const race = new Race()
 
 
@@ -11,14 +11,14 @@ export const traits = [
   },
   {
     name: 'size',
-    type: getInitTrateType({
+    type: getInitTraiteType({
       type: expect.any(String),
       value: expect.any(Number),
     }),
   },
   {
     name: 'speed',
-    type: getInitTrateType({
+    type: getInitTraiteType({
       value: expect.any(Number),
     }),
     test() {
@@ -41,7 +41,7 @@ export const traits = [
   },
   {
     name: 'age',
-    type: getInitTrateType({
+    type: getInitTraiteType({
       value: expect.any(Number),
     }),
     test() {
@@ -76,7 +76,7 @@ export const traits = [
   },
   {
     name: 'alignment',
-    type: getInitTrateType({ value: expect.any(String) }),
+    type: getInitTraiteType({ value: expect.any(String) }),
     test() {
       describe('init', () => {
         const alignments = ['neutralGood', 'chaoticGood', 'lawfulNeutral', 'neutral', 'chaoticNeutral', 'lawfulEvil', 'neutralEvil', 'chaoticEvil']
@@ -119,7 +119,7 @@ export const traits = [
   },
   {
     name: 'abilityScoreIncrease',
-    type: getInitTrateType({ value: expect.any(Object) }),
+    type: getInitTraiteType({ value: expect.any(Object) }),
     test() {
       describe('init', () => {
 
