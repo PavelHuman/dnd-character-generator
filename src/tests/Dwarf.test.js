@@ -1,21 +1,11 @@
 import { Dwarf } from '../core/races/Dwarf.js'
-import { commonTraits } from './types.js'
+import { Race } from '../core/races/Race.js'
+import { testInstance } from './utils.js'
+import { sideEffectTrait, pureTrait } from './types.js'
 
-// 5. добавить чертам, которые влияют на какие-то параметры метод applyIt в котором будут применяться эти параметры. Вызывать метод applyIt в конструкторе класса Dwarf #38
 const dwarf = new Dwarf()
 
-const pureTrait = {
-  state: expect.any(Boolean),
-  title: expect.any(String),
-  description: expect.any(String),
-}
-
-const sideEffectTrait = {
-  ...pureTrait,
-  applyIt: expect.any(Function),
-}
-
-const specificTraits = [
+const traits = [
   {
     name: 'dwarvenCombatTraining',
     type: sideEffectTrait,
@@ -38,27 +28,9 @@ const specificTraits = [
     },
   },
   {
-    name: 'dwarvenToughness',
-    type: sideEffectTrait,
-    test() {
-      describe(`${this.name} effect`, () => {
-        test('should add expeceted increase hit point maximum by 1', () => {
-          const dwarfMockedInstance = {
-            hitPointMaximumIncrease: 0,
-          }
-
-          dwarf[this.name].applyIt.call(dwarfMockedInstance)
-
-          expect(dwarfMockedInstance.hitPointMaximumIncrease).toEqual(dwarf.hitPointMaximumIncrease)
-        })
-      })
-    },
-  },
-  {
     name: 'dwarvenArmorTraining',
     type: sideEffectTrait,
     test() {
-      // console.log(dwarf.proficiency)
       describe(`${this.name} effect`, () => {
         test('should add expeceted armor to proficency property', () => {
           const dwarfMockedInstance = {
@@ -90,28 +62,12 @@ const specificTraits = [
   },
 ]
 
-const testTraitExisting = trait => {
-  test('should exist', () => {
-    expect(dwarf).toHaveProperty(trait.name, trait.type)
-  })
-}
 
-
-
-function testTrait(trait) {
-  describe(`trait ${trait.name}`, () => {
-    testTraitExisting(trait)
-
-    trait?.test?.()
-  })
-}
-
-// console.log(Dwarf)
-
-describe('Dwarf', () => {
-  [
-    ...commonTraits,
-    ...specificTraits,
-  ].forEach(testTrait)
+testInstance({
+  instance: {
+    name: 'dwarf',
+    value: dwarf,
+  },
+  constructors: [Dwarf, Race],
+  traits,
 })
-

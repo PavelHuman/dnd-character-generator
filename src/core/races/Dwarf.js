@@ -1,8 +1,6 @@
 import { Race } from './Race.js'
 
 export class Dwarf extends Race {
-  speed = 25
-
   languages = ['common', 'dwarvish']
 
   subraces = ['hill', 'mountain']
@@ -35,14 +33,6 @@ export class Dwarf extends Race {
     description: 'Whenever you make an Intelligence History check related to the origin of stonework, you are considered proficient in the History skill and add double your proficiency bonus to the check,instead of your normal proficiency bonus',
   }
 
-
-  dwarvenToughness = {
-    applyIt: function () {
-      this.hitPointMaximumIncrease += 1
-    },
-    description: ' Your hit point maximum increases by 1, and it increases by 1 every time you gain a level.', state: true, title: 'Dwarven Toughness',
-  }
-
   dwarvenArmorTraining = {
     title: 'Dwarven Armor Training.',
     state: true,
@@ -55,11 +45,11 @@ export class Dwarf extends Race {
 
   constructor(options = {}) {
     super(options)
-
-    super.increaseAbilityScore({ constitution: 2 })
+    this.speed.init(25)
+    this.abilityScoreIncrease.init({ constitution: 2 })
 
     this.dwarvenCombatTraining.applyIt.call(this)
-    this.dwarvenToughness.applyIt.call(this)
+
     this.dwarvenArmorTraining.applyIt.call(this)
   }
 

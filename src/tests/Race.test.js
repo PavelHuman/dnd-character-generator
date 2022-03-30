@@ -1,98 +1,164 @@
 import { Race } from '../core/races/Race.js'
-import { commonTraits } from './types.js'
-
+import { testInstance, getInitTraiteType } from './utils.js'
 const race = new Race()
 
-describe('race', () => {
-  test('should be instance of Race', () => {
-    expect(race).toBeInstanceOf(Race)
-  })
-
-  commonTraits.forEach(trait => {
-    test(`should exist trait ${trait.name}`, () => {
-      expect(race).toHaveProperty(trait.name, trait.type)
-    })
-  })
-
-  describe('initAge', () => {
-    shouldMethodExist('initAge')
-
-    const mockedRace = {
-      age: 0,
-    }
-
-    test('should apply received age if age >= 50', () => {
-      const age = 50
-      race.initAge.call(mockedRace, age)
-
-      expect(mockedRace.age).toBe(age)
-    })
-
-    test('should apply random number <= 400 if received age < 50 ', () => {
-      const age = 49
-      race.initAge.call(mockedRace, age)
-
-      expect(mockedRace.age).toEqual(expect.any(Number))
-      expect(mockedRace.age <= 400).toBe(true)
-    })
-
-  })
-
-  describe('increaseAbilityScore', () => {
-    shouldMethodExist('increaseAbilityScore')
-
-    test('should increase ability', () => {
-      const mockedRace = {
-        abilityScoreIncrease: {},
-      }
-
-      race.increaseAbilityScore.call(mockedRace, { constitution: 2 })
-
-      expect(mockedRace.abilityScoreIncrease).toEqual({ constitution: 2 })
-    })
-
-    test('should sum if ability already exist', () => {
-      const mockedRace = {
-        abilityScoreIncrease: { constitution: 2 },
-      }
-
-      race.increaseAbilityScore.call(mockedRace, { constitution: 2 })
-
-      expect(mockedRace.abilityScoreIncrease).toEqual({ constitution: 4 })
-    })
-  })
-
-  describe('initAlignment', () => {
-    shouldMethodExist('initAlignment')
-
-    const alignments = ['neutralGood', 'chaoticGood', 'lawfulNeutral', 'neutral', 'chaoticNeutral', 'lawfulEvil', 'neutralEvil', 'chaoticEvil']
-
-    test('should assign received alignment', () => {
-      const mockedRace = {
-        alignment: '',
-      }
-      race.initAlignment.call(mockedRace, alignments[alignments.length - 1])
-
-      expect(mockedRace.alignment).toEqual(alignments[alignments.length - 1])
-    })
-
-    test('should assign random alignment if not received', () => {
-      const mockedRace = {
-        alignment: '',
-      }
-      race.initAlignment.call(mockedRace)
-
-      expect(alignments.includes(mockedRace.alignment)).toEqual(true)
-    })
-
-  })
 
 
+export const traits = [
+  {
+    name: 'languages',
+    type: expect.any(Array),
+  },
+  {
+    name: 'size',
+    type: getInitTraiteType({
+      type: expect.any(String),
+      value: expect.any(Number),
+    }),
+  },
+  {
+    name: 'speed',
+    type: getInitTraiteType({
+      value: expect.any(Number),
+    }),
+    test() {
+      describe('init', () => {
+        const mockedRace = {
+          speed: {
+            value: 0,
+            init: race.speed.init,
+          },
+        }
+
+        test('should apply received speed value', () => {
+          const speed = 25
+          mockedRace.speed.init(speed)
+
+          expect(mockedRace.speed.value).toBe(speed)
+        })
+      })
+    },
+  },
+  {
+    name: 'age',
+    type: getInitTraiteType({
+      value: expect.any(Number),
+    }),
+    test() {
+      describe('init', () => {
+        const mockedRace = {
+          age: {
+            value: 0,
+            init: race.age.init,
+          },
+        }
+
+        test('should apply received age if age >= 50', () => {
+          const age = 50
+          mockedRace.age.init(age)
+
+          expect(mockedRace.age.value).toBe(age)
+        })
+
+        test('should apply random number <= 400 if received age < 50 ', () => {
+          const age = 49
+          mockedRace.age.init(age)
+
+          expect(mockedRace.age.value).toEqual(expect.any(Number))
+          expect(mockedRace.age.value <= 400).toBe(true)
+        })
+      })
+    },
+  },
+  {
+    name: 'hitPointMaximumIncrease',
+    type: expect.any(Number),
+  },
+  {
+    name: 'alignment',
+    type: getInitTraiteType({ value: expect.any(String) }),
+    test() {
+      describe('init', () => {
+        const alignments = ['neutralGood', 'chaoticGood', 'lawfulNeutral', 'neutral', 'chaoticNeutral', 'lawfulEvil', 'neutralEvil', 'chaoticEvil']
+
+        test('should assign received alignment', () => {
+          const mockedRace = {
+            alignment: {
+              valuie: '',
+              init: race.alignment.init,
+            },
+          }
+          mockedRace.alignment.init(alignments[alignments.length - 1])
+
+          expect(mockedRace.alignment.value).toEqual(alignments[alignments.length - 1])
+        })
+
+        test('should assign random alignment if not received', () => {
+          const mockedRace = {
+            alignment: {
+              valuie: '',
+              init: race.alignment.init,
+            },
+          }
+
+          mockedRace.alignment.init()
+
+          expect(alignments.includes(mockedRace.alignment.value)).toEqual(true)
+        })
+
+      })
+    },
+  },
+  {
+    name: 'proficiency',
+    type: expect.objectContaining({
+      tools: expect.any(Array),
+      weapon: expect.any(Array),
+      armor: expect.any(Array),
+    }),
+  },
+  {
+    name: 'abilityScoreIncrease',
+    type: getInitTraiteType({ value: expect.any(Object) }),
+    test() {
+      describe('init', () => {
+
+        test('should increase ability', () => {
+          const mockedRace = {
+            abilityScoreIncrease: {
+              value: {},
+              init: race.abilityScoreIncrease.init,
+            },
+          }
+
+          mockedRace.abilityScoreIncrease.init({ constitution: 2 })
+
+          expect(mockedRace.abilityScoreIncrease.value).toEqual({ constitution: 2 })
+        })
+
+        test('should sum if ability already exist', () => {
+          const mockedRace = {
+            abilityScoreIncrease: {
+              value: { constitution: 2 },
+              init: race.abilityScoreIncrease.init,
+            },
+          }
+
+          mockedRace.abilityScoreIncrease.init({ constitution: 2 })
+
+          expect(mockedRace.abilityScoreIncrease.value).toEqual({ constitution: 4 })
+        })
+      })
+    },
+  },
+]
+
+
+testInstance({
+  instance: {
+    name: 'race',
+    value: race,
+  },
+  constructors: [Race],
+  traits,
 })
-
-
-function shouldMethodExist(prop) {
-  test('should exist', () => {
-    expect(race).toHaveProperty(prop, expect.any(Function))
-  })
-}
