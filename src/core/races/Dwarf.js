@@ -33,15 +33,7 @@ export class Dwarf extends Race {
     description: 'Whenever you make an Intelligence History check related to the origin of stonework, you are considered proficient in the History skill and add double your proficiency bonus to the check,instead of your normal proficiency bonus',
   }
 
-  dwarvenArmorTraining = {
-    title: 'Dwarven Armor Training.',
-    state: true,
-    description: 'You have proficiency with light and medium armor',
-    applyIt: function () {
-      const armorProficiency = ['light', 'medium']
-      this.proficiency.armor = armorProficiency
-    },
-  }
+
 
   constructor(options = {}) {
     super(options)
@@ -50,7 +42,6 @@ export class Dwarf extends Race {
 
     this.dwarvenCombatTraining.applyIt.call(this)
 
-    this.dwarvenArmorTraining.applyIt.call(this)
   }
 
 }

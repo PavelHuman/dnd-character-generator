@@ -27,27 +27,7 @@ const traits = [
       })
     },
   },
-  {
-    name: 'dwarvenArmorTraining',
-    type: sideEffectTrait,
-    test() {
-      describe(`${this.name} effect`, () => {
-        test('should add expeceted armor to proficency property', () => {
-          const dwarfMockedInstance = {
-            proficiency: {
-              armor: [],
-            },
-          }
-          dwarf[this.name].applyIt.call(dwarfMockedInstance)
 
-          const expectedArmor = ['light', 'medium']
-          expect(dwarfMockedInstance.proficiency.armor).toEqual(
-            expect.arrayContaining(expectedArmor),
-          )
-        })
-      })
-    },
-  },
   {
     name: 'darkvision',
     type: pureTrait,
