@@ -1,5 +1,5 @@
 
-import { phb } from './core/PlayersHandBook.js'
+import { phb } from '../core/PlayersHandBook.js'
 
 class Entity {
   constructor() {
@@ -18,6 +18,7 @@ class Entity {
 
 
   initAbilityScores() {
+
     this.abilityScores = []
     for (let i = 0; i < 6; i++) {
       this.abilityScores.push(phb.getAbilityScore())
