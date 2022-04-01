@@ -1,4 +1,4 @@
-import Entity from '../Entity.js'
+import Entity from '../model/Entity.js'
 
 const entity = new Entity()
 describe('Entity', () => {
