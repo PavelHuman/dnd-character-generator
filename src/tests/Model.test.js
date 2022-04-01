@@ -14,7 +14,7 @@ describe('model', () => {
 
   describe('entity', () => {
     test('should be instance of Entity', () => {
-      expect(model.entity).toBeInstanceof(Entity)
+      expect(model.entity).toBeInstanceOf(Entity)
     })
   })
 })
