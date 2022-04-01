@@ -5,7 +5,7 @@ const model = new Model()
 
 describe('model', () => {
   test('should be instance of Model', () => {
-    expect(model).toBeInstanceof(Model)
+    expect(model).toBeInstanceOf(Model)
   })
 
   test('should has entity property', () => {
