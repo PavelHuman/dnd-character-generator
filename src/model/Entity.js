@@ -4,12 +4,17 @@ import { phb } from '../core/PlayersHandBook.js'
 class Entity {
   constructor() {
     this.experiencePoints = 0
-
     this.initAbilityScores()
     this.initAbilities()
     this.initLevel()
+    this.initRace()
 
   }
+  initRace() {
+
+  }
+
+
 
   initAbilities() {
     this.abilities = phb.getAbilities()
@@ -30,8 +35,6 @@ class Entity {
       this.proficiencyBonus = 2
     }
   }
-
 }
-
 
 export default Entity
