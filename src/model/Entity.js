@@ -2,6 +2,7 @@
 import { phb } from '../core/PlayersHandBook.js'
 
 class Entity {
+
   constructor() {
     this.experiencePoints = 0
     this.initAbilityScores()
@@ -11,7 +12,7 @@ class Entity {
 
   }
   initRace() {
-
+    Object.assign(Entity.prototype)
   }
 
 
@@ -36,5 +37,6 @@ class Entity {
     }
   }
 }
+
 
 export default Entity
