@@ -1,8 +1,8 @@
 
 import { phb } from '../core/PlayersHandBook.js'
+import { hillDwarf } from '../core/races/HillDwarf.js'
 
 class Entity {
-
   constructor() {
     this.experiencePoints = 0
     this.initAbilityScores()
@@ -11,25 +11,22 @@ class Entity {
     this.initRace()
 
   }
+
   initRace() {
-    Object.assign(Entity.prototype)
+    Object.assign(this, hillDwarf)
   }
-
-
 
   initAbilities() {
     this.abilities = phb.getAbilities()
   }
 
-
-
   initAbilityScores() {
-
     this.abilityScores = []
     for (let i = 0; i < 6; i++) {
       this.abilityScores.push(phb.getAbilityScore())
     }
   }
+
   initLevel() {
     if (this.experiencePoints < 300) {
       this.level = 1
