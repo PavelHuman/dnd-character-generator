@@ -1,4 +1,6 @@
 import { diceRoller as diceRoller } from './DiceRoller.js'
+import { HillDwarf } from './races/HillDwarf.js'
+import { MountainDwarf } from './races/MountainDwarf.js'
 class PlayersHandBook {
   getAbilityScore() {
     const rolln4d6 = diceRoller.rollDices('4d6')
@@ -15,6 +17,16 @@ class PlayersHandBook {
       intelligence: null,
       wisdom: null,
       charisma: null,
+    }
+  }
+  getRacialTraits(race, options) {
+    if (race === 'dwarf') {
+      if (options.subrace === 'hill dwarf') {
+        return new HillDwarf(options)
+      }
+      if (options.subrace === 'mountain dwarf') {
+        return new MountainDwarf(options)
+      }
     }
   }
 }
