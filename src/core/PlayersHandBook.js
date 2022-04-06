@@ -19,7 +19,7 @@ class PlayersHandBook {
       charisma: null,
     }
   }
-  getRacialTraits(race, options) {
+  getRacialTraits(race, options = {}) {
     if (race === 'dwarf') {
       if (options.subrace === 'hill dwarf') {
         return new HillDwarf(options)
