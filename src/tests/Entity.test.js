@@ -1,7 +1,11 @@
 import Entity from '../model/Entity.js'
-import { hillDwarf } from '../core/races/HillDwarf.js'
 
-const entity = new Entity()
+const entity = new Entity({
+  race: 'dwarf',
+  options: {
+    subrace: 'hill dwarf',
+  },
+})
 describe('Entity', () => {
   test('should have experiencePoints property', () => {
     expect(entity).toHaveProperty('experiencePoints')
@@ -16,7 +20,9 @@ describe('Entity', () => {
 
       entity.initRace.call(mockedEntity, 'dwarf', { subrace: 'hill dwarf' })
 
-      expect(mockedEntity).toEqual(expect.objectContaining(hillDwarf))
+      expect(mockedEntity).toEqual(expect.objectContaining({
+        dwarvenToughness: expect.any(Object),
+      }))
     })
   })
 })

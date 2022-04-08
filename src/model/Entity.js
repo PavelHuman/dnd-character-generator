@@ -1,19 +1,25 @@
 
 import { phb } from '../core/PlayersHandBook.js'
-import { hillDwarf } from '../core/races/HillDwarf.js'
+
 
 class Entity {
-  constructor() {
+  constructor({
+    race,
+    options,
+  }) {
     this.experiencePoints = 0
     this.initAbilityScores()
     this.initAbilities()
     this.initLevel()
-    this.initRace()
+    this.initRace(race, options)
 
   }
 
-  initRace() {
-    Object.assign(this, hillDwarf)
+  initRace(race, options) {
+    Object.assign(
+      this,
+      phb.getRacialTraits(race, options),
+    )
   }
 
   initAbilities() {
