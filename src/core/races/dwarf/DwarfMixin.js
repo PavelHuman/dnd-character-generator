@@ -4,7 +4,7 @@ export const DwarfMixin = Race => class Dwarf extends Race {
   darkvision = {
     state: true,
     title: 'Darkvision',
-    description: 'Accustomed to life underground, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can\'t discern color in darkness, only shades of gray.'
+    description: 'Accustomed to life underground, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can\'t discern color in darkness, only shades of gray.',
   }
 
   dwarvenResilience = {
@@ -22,7 +22,7 @@ export const DwarfMixin = Race => class Dwarf extends Race {
         ...this.proficiency.weapon,
         ...['battleaxe', 'handaxe', 'light hammer', 'warhammer'],
       ]
-    }
+    },
   }
 
 

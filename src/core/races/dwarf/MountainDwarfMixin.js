@@ -10,7 +10,7 @@ export const MountainDwarfMixin = Dwarf => class MountainDwarf extends Dwarf {
         ...this.proficiency.armor,
         ...['light', 'medium'],
       ]
-    }
+    },
   }
 
 
