@@ -1,7 +1,67 @@
-import { diceRoller } from '../DiceRoller.js'
+export class Race {
+  age = {
+    value: 0,
+    init(age) {
+      function getRangomAge() {
+        return 50 + Math.ceil(Math.random() * (400 - 50))
+      }
 
-class Race {
+      if (age) {
+        this.value = age < 50 ? getRangomAge() : age
+
+        return
+      }
+
+      this.value = getRangomAge()
+    },
+  }
+
   hitPointMaximumIncrease = 0
+
+  alignment = {
+    value: 'neutral',
+    init(alignment) {
+      const alignments = ['neutralGood', 'chaoticGood', 'lawfulNeutral', 'neutral', 'chaoticNeutral', 'lawfulEvil', 'neutralEvil', 'chaoticEvil']
+
+      this.value = alignment ?? alignments[Math.floor(Math.random() * alignments.length)]
+    },
+  }
+
+  speed = {
+    value: 0,
+    init(speed) {
+      this.value = speed ?? 30
+    },
+  }
+
+  size = {
+    type: '',
+    value: 0,
+    init(size) {
+      if (this.value <= 65) {
+        this.value = size ?? 66 + Math.ceil(Math.random() * (244 - 66))
+      }
+    },
+  }
+
+  abilityScoreIncrease = {
+    value: {},
+    init(abilityToIncrease = {}) {
+      Object.entries(abilityToIncrease).forEach(([abilityName, abilityValue]) => {
+        if (this.value[abilityName]) {
+          this.value[abilityName] = this.value[abilityName] + abilityValue
+
+          return
+        }
+
+        this.value[abilityName] = abilityValue
+      })
+    },
+  }
+
+  languages = []
+
+  subraces = []
 
   proficiency = {
     tools: [],
@@ -9,44 +69,13 @@ class Race {
     armor: [],
   }
 
-  abilityScoreIncrease = {}
-
   constructor(options = {}) {
-    this.initAge(options.age)
-    this.initAlignment(options.alignment)
-    this.initSize(options.size)
-  }
-
-  initAge(age) {
-    const min = 18
-    const max = 450
-    this.age = age ? age : Math.ceil(min + Math.random() * (max - min))
-  }
-
-  initAlignment(alignment) {
-    this.alignment = alignment
-  }
-
-  initSize(size) {
-    this.size = size
-  }
-
-  increaseAbilityScore(abilityScoreToIncrease) {
-    this.abilityScoreIncrease = {
-      ...this.abilityScoreIncrease,
-      ...(Object.entries(abilityScoreToIncrease).reduce((acc, current) => {
-        const [ability, value] = current
-
-        acc[ability] = (this.abilityScoreIncrease[ability] || 0) + value
-
-        return acc
-      }, {})),
-    }
-  }
-
-  initProficiencyTools(tools) {
-    this.proficiency.tools = [diceRoller.rollKeys(tools)]
+    this.age.init(options.age)
+    this.size.init(options.size)
+    this.speed.init(options.speed)
+    this.alignment.init(options.alignment)
+    this.abilityScoreIncrease.init(options.abilityScoreIncrease)
   }
 }
 
-export default Race
+export const race = new Race()
