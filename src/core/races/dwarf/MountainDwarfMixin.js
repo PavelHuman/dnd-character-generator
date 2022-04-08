@@ -5,7 +5,7 @@ export const MountainDwarfMixin = Dwarf => class MountainDwarf extends Dwarf {
     state: true,
     title: 'Dwarven Armor Training',
     description: 'You have proficiency with light and medium armor.',
-    applyIt: () => {
+    applyIt() {
       this.proficiency.armor = [
         ...this.proficiency.armor,
         ...['light', 'medium'],
@@ -16,8 +16,8 @@ export const MountainDwarfMixin = Dwarf => class MountainDwarf extends Dwarf {
 
   constructor(options = {}) {
     super(options)
-    super.increaseAbilityScore({ strength: 2 })
+    this.abilityScoreIncrease.init({ strength: 2 })
 
-    this.dwarvenArmorTraining.applyIt()
+    this.dwarvenArmorTraining.applyIt.call(this)
   }
 }

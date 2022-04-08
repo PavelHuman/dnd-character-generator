@@ -1,5 +1,5 @@
 import { DwarfMixin, dwarvenSubraces } from './dwarf/index.js'
-import Race from './Race.js'
+import { Race } from './Race.js'
 import { diceRoller } from '../DiceRoller.js'
 
 const applyMixins = (Base, defaultMixin, ...mixins) => [defaultMixin, ...mixins].reduce((acc, mixin) => mixin(acc), Base)

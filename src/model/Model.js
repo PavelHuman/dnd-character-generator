@@ -2,7 +2,7 @@ import Entity from './Entity.js'
 import { normalizeInput } from '../utils.js'
 
 
-class Model {
+export class Model {
   entity = new Entity()
 
   refresh(data = {}) {
@@ -13,4 +13,3 @@ class Model {
 }
 
 export const model = new Model()
-console.log(model)

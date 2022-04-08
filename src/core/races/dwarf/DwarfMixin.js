@@ -17,7 +17,7 @@ export const DwarfMixin = Race => class Dwarf extends Race {
     state: true,
     title: 'Dwarven Combat Training',
     description: 'You have proficiency with the battleaxe, handaxe, light hammer, and warhammer',
-    applyIt: () => {
+    applyIt() {
       this.proficiency.weapon = [
         ...this.proficiency.weapon,
         ...['battleaxe', 'handaxe', 'light hammer', 'warhammer'],
@@ -36,14 +36,14 @@ export const DwarfMixin = Race => class Dwarf extends Race {
 
   constructor(options = {}) {
     super(options)
-    super.increaseAbilityScore({ constitution: 2 })
     super.initProficiencyTools([
       ...(options.proficiencyTool
         ? [options.proficiencyTool]
         : ['smith\'s tools', 'brewer\'s supplies', 'mason\'s tools']),
     ])
+    this.abilityScoreIncrease.init({ constitution: 2 })
 
-    this.dwarvenCombatTraining.applyIt()
+    this.dwarvenCombatTraining.applyIt.call(this)
   }
 
 

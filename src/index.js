@@ -9,4 +9,3 @@ function initApp() {
     root: document.getElementById('root'),
   }).render()
 }
-
