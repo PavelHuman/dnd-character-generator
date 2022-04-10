@@ -1,5 +1,5 @@
-import { Race } from '../core/races/Race.js'
-import { testRaceInstance, getInitTraiteType } from './utils.js'
+import { Race } from '../../core/races/Race.js'
+import testUtils from '../testUtils.js'
 const race = new Race()
 
 
@@ -11,14 +11,14 @@ export const traits = [
   },
   {
     name: 'size',
-    type: getInitTraiteType({
+    type: testUtils.getInitTraiteType({
       type: expect.any(String),
       value: expect.any(Number),
     }),
   },
   {
     name: 'speed',
-    type: getInitTraiteType({
+    type: testUtils.getInitTraiteType({
       value: expect.any(Number),
     }),
     test() {
@@ -41,7 +41,7 @@ export const traits = [
   },
   {
     name: 'age',
-    type: getInitTraiteType({
+    type: testUtils.getInitTraiteType({
       value: expect.any(Number),
     }),
     test() {
@@ -76,7 +76,7 @@ export const traits = [
   },
   {
     name: 'alignment',
-    type: getInitTraiteType({ value: expect.any(String) }),
+    type: testUtils.getInitTraiteType({ value: expect.any(String) }),
     test() {
       describe('init', () => {
         const alignments = ['neutralGood', 'chaoticGood', 'lawfulNeutral', 'neutral', 'chaoticNeutral', 'lawfulEvil', 'neutralEvil', 'chaoticEvil']
@@ -119,7 +119,7 @@ export const traits = [
   },
   {
     name: 'abilityScoreIncrease',
-    type: getInitTraiteType({ value: expect.any(Object) }),
+    type: testUtils.getInitTraiteType({ value: expect.any(Object) }),
     test() {
       describe('init', () => {
 
@@ -154,7 +154,7 @@ export const traits = [
 ]
 
 
-testRaceInstance({
+testUtils.testRaceInstance({
   instance: {
     name: 'race',
     value: race,

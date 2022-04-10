@@ -1,8 +1,8 @@
-import { Race } from '../core/races/Race.js'
-import { DwarfMixin } from '../core/races/dwarf/DwarfMixin.js'
-import { HillDwarfMixin } from '../core/races/dwarf/HillDwarfMixin.js'
-import { testRaceInstance, getInitTraiteType } from './utils.js'
-import { sideEffectTrait } from './types.js'
+import { Race } from '../../core/races/Race.js'
+import { DwarfMixin } from '../../core/races/dwarf/DwarfMixin.js'
+import { HillDwarfMixin } from '../../core/races/dwarf/HillDwarfMixin.js'
+import testUtils from '../testUtils.js'
+import { sideEffectTrait } from '../types.js'
 
 const Dwarf = DwarfMixin(Race)
 const HillDwarf = HillDwarfMixin(Dwarf)
@@ -11,7 +11,7 @@ const hillDwarf = new HillDwarf()
 const traits = [
   {
     name: 'abilityScoreIncrease',
-    type: getInitTraiteType({ value: expect.any(Object) }),
+    type: testUtils.getInitTraiteType({ value: expect.any(Object) }),
     test() {
       test('should contains wisdom: 1', () => {
 
@@ -39,7 +39,7 @@ const traits = [
   },
 ]
 
-testRaceInstance({
+testUtils.testRaceInstance({
   instance: {
     name: 'hillDwarf',
     value: hillDwarf,
