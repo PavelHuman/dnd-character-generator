@@ -1,8 +1,8 @@
-import { MountainDwarfMixin } from '../core/races/dwarf/MountainDwarfMixin.js'
-import { sideEffectTrait } from './types.js'
-import { testRaceInstance, getInitTraiteType } from './utils.js'
-import { Race } from '../core/races/Race.js'
-import { DwarfMixin } from '../core/races/dwarf/DwarfMixin.js'
+import { MountainDwarfMixin } from '../../core/races/dwarf/MountainDwarfMixin.js'
+import { sideEffectTrait } from '../types.js'
+import testUtils from '../testUtils.js'
+import { Race } from '../../core/races/Race.js'
+import { DwarfMixin } from '../../core/races/dwarf/DwarfMixin.js'
 
 const Dwarf = DwarfMixin(Race)
 const MountainDwarf = MountainDwarfMixin(Dwarf)
@@ -33,7 +33,7 @@ const traits = [
   },
   {
     name: 'abilityScoreIncrease',
-    type: getInitTraiteType({ value: expect.any(Object) }),
+    type: testUtils.getInitTraiteType({ value: expect.any(Object) }),
     test() {
       test('should contains strength: 2', () => {
 
@@ -42,7 +42,7 @@ const traits = [
     },
   },
 ]
-testRaceInstance({
+testUtils.testRaceInstance({
   instance: {
     name: 'mountainDwarf',
     value: mountainDwarf,
