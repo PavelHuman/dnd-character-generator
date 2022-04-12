@@ -1,6 +1,7 @@
 import { diceRoller as diceRoller } from './DiceRoller.js'
 import { HillDwarf } from './races/HillDwarf.js'
 import { MountainDwarf } from './races/MountainDwarf.js'
+
 class PlayersHandBook {
   getAbilityScore() {
     const rolln4d6 = diceRoller.rollDices('4d6')
@@ -29,6 +30,10 @@ class PlayersHandBook {
       }
     }
   }
+  raceFactory() {
+
+  }
+
 }
 export const phb = new PlayersHandBook()
 

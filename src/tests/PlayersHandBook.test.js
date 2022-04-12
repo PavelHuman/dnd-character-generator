@@ -15,4 +15,11 @@ describe('PlayersHandBook', () => {
       expect(phb.getRacialTraits('dwarf', { subrace: 'mountain dwarf' })).toBeInstanceOf(MountainDwarf)
     })
   })
+  describe('PlayersHandBook', () => {
+    test('should have raceFactory property', () => {
+      expect(phb).toHaveProperty('raceFactory', expect.any(Function))
+    })
+  })
 })
+
+
