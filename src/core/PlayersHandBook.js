@@ -1,5 +1,6 @@
 import { diceRoller as diceRoller } from './DiceRoller.js'
 import { HillDwarf } from './races/HillDwarf.js'
+import { MountainDwarf } from './races/MountainDwarf.js'
 
 class PlayersHandBook {
   getAbilityScore() {
@@ -19,7 +20,15 @@ class PlayersHandBook {
       charisma: null,
     }
   }
-  getRacialTraits() {
+  getRacialTraits(race, options = {}) {
+    if (race === 'dwarf') {
+      if (options.subrace === 'hill dwarf') {
+        return new HillDwarf(options)
+      }
+      if (options.subrace === 'mountain dwarf') {
+        return new MountainDwarf(options)
+      }
+    }
     this.raceFactory()
   }
   raceFactory(race, subrace) {
