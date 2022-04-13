@@ -9,6 +9,11 @@ describe('PlayersHandBook', () => {
   test('should have raceFactory property', () => {
     expect(phb).toHaveProperty('raceFactory', expect.any(Function))
   })
+  describe('raceFactory', () => {
+    test('depending on the input parameters, generate the desired race instance', () => {
+      expect(phb.raceFactory('dwarf', 'hill dwarf')).toBeInstanceOf(HillDwarf)
+    })
+  })
   describe('getRacialTraits', () => {
     test('should return HillDwarf instance with valid input', () => {
       expect(phb.getRacialTraits('dwarf', { subrace: 'hill dwarf' })).toBeInstanceOf(HillDwarf)
