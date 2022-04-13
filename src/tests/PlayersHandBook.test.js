@@ -14,15 +14,21 @@ describe('PlayersHandBook', () => {
       expect(phb.raceFactory('dwarf', 'hill dwarf')).toBeInstanceOf(HillDwarf)
     })
   })
-  describe('getRacialTraits', () => {
-    test('should return HillDwarf instance with valid input', () => {
-      expect(phb.getRacialTraits('dwarf', { subrace: 'hill dwarf' })).toBeInstanceOf(HillDwarf)
-    })
-    test('should return MountainDwarf instance with valid input', () => {
-      expect(phb.getRacialTraits('dwarf', { subrace: 'mountain dwarf' })).toBeInstanceOf(MountainDwarf)
+})
+describe('getRacialTraits', () => {
+  test('should return HillDwarf instance with valid input', () => {
+    expect(phb.getRacialTraits('dwarf', { subrace: 'hill dwarf' })).toBeInstanceOf(HillDwarf)
+  })
+  test('should return MountainDwarf instance with valid input', () => {
+    expect(phb.getRacialTraits('dwarf', { subrace: 'mountain dwarf' })).toBeInstanceOf(MountainDwarf)
 
-    })
+  })
+  test('should call raceFactory method', () => {
+    const mockedPhb = {
+      raceFactory: jest.fn(),
+    }
+    phb.getRacialTraits.call(mockedPhb)
+    expect(mockedPhb.raceFactory).toBeCalled()
   })
 })
-
 

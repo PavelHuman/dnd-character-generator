@@ -29,6 +29,7 @@ class PlayersHandBook {
         return new MountainDwarf(options)
       }
     }
+    this.raceFactory()
   }
   raceFactory(race, subrace) {
     if (race === 'dwarf') {
