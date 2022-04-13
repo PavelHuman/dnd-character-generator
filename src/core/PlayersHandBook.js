@@ -30,9 +30,13 @@ class PlayersHandBook {
       }
     }
   }
-  raceFactory() {
+  raceFactory(race, subrace) {
+    if (race === 'dwarf') {
+      if (subrace === 'hill dwarf') {
+        return new HillDwarf()
+      }
+    }
   }
-
 }
 export const phb = new PlayersHandBook()
 
