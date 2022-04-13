@@ -20,21 +20,18 @@ class PlayersHandBook {
       charisma: null,
     }
   }
-  getRacialTraits(race, options = {}) {
-    if (race === 'dwarf') {
-      if (options.subrace === 'hill dwarf') {
-        return new HillDwarf(options)
-      }
-      if (options.subrace === 'mountain dwarf') {
-        return new MountainDwarf(options)
-      }
-    }
-    this.raceFactory()
+
+  getRacialTraits(race, options) {
+    return this.raceFactory(race, options.subrace)
   }
+
   raceFactory(race, subrace) {
     if (race === 'dwarf') {
       if (subrace === 'hill dwarf') {
-        return new HillDwarf()
+        return new HillDwarf({ subrace })
+      }
+      if (subrace === 'mountain dwarf') {
+        return new MountainDwarf({ subrace })
       }
     }
   }

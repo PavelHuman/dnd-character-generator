@@ -27,7 +27,7 @@ describe('getRacialTraits', () => {
     const mockedPhb = {
       raceFactory: jest.fn(),
     }
-    phb.getRacialTraits.call(mockedPhb)
+    phb.getRacialTraits.call(mockedPhb, 'dwarf', { subrace: 'hill dwarf' })
     expect(mockedPhb.raceFactory).toBeCalled()
   })
 })
