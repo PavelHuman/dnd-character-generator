@@ -7,7 +7,6 @@ const elf = new Elf()
 
 const traits = [
 
-
   {
     name: 'darkvision',
     type: pureTrait,
