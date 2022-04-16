@@ -1,6 +1,6 @@
 import { Dwarf } from '../core/races/Dwarf.js'
 import { Race } from '../core/races/Race.js'
-import { testInstance } from './utils.js'
+import { getInitTraiteType, testInstance } from './utils.js'
 import { sideEffectTrait, pureTrait } from './types.js'
 
 const dwarf = new Dwarf()
@@ -30,7 +30,10 @@ const traits = [
 
   {
     name: 'darkvision',
-    type: pureTrait,
+    type: getInitTraiteType({
+      ...pureTrait,
+      value: expect.any(Number),
+    }),
   },
   {
     name: 'dwarvenResilience',

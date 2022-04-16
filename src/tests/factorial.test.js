@@ -52,16 +52,3 @@ describe('factorialList', () => {
     expect(factorialList(inputNumber)).toEqual(Array.from({ length: inputNumber + 1 }, (_, i) => factorial(i)))
   })
 })
-
-console.log({
-  engilsh: factorial(26),
-  russian: factorial(33),
-  sancrta: factorial(49),
-})
-
-
-console.log(factorialList(33), factorialList(49))
-
-console.log(33 / 99 * 100)
-
-console.log(factorial(33) / factorial(49) * 100)

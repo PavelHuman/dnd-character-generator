@@ -6,7 +6,6 @@ import { sideEffectTrait } from './types.js'
 
 const hillDwarf = new HillDwarf()
 
-console.log(hillDwarf)
 const traits = [
   {
     name: 'abilityScoreIncrease',
