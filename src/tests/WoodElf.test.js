@@ -38,34 +38,27 @@ const traits = [
       })
     },
   },
+
   {
     name: 'fleetOfFoot',
-    type: getInitTraiteType({
-      value: expect.any(Number),
-    }),
+    type: sideEffectTrait,
+
     test() {
       describe('init', () => {
-        const mockedRace = {
-          speed: {
-            value: 30,
-            init: woodElf.speed.init,
-          },
-        }
-
-        test('should apply received speed value', () => {
-          const speed = 30
-          mockedRace.speed.init(speed)
-
-          expect(mockedRace.speed.value).toBe(speed)
-        })
-        test('speed score increases by 5', () => {
-          const speed = 30
-          mockedRace.speed.init(speed)
-          expect(mockedRace.speed.value).toBe(speed + 5)
+        test('speed score increases by 35', () => {
+          const elfMockedInstance = {
+            speed: {
+              value: 0,
+              init: woodElf.speed.init,
+            },
+          }
+          woodElf.fleetOfFoot.applyIt.call(elfMockedInstance)
+          expect(elfMockedInstance.speed.value).toEqual(35)
         })
       })
     },
   },
+
 
   {
     name: 'maskOfTheWild',

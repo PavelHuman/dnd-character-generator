@@ -18,11 +18,21 @@ export class WoodElf extends Elf {
     description: 'You can attempt to hide even when you are only lightly obscured by foliage, heavy rain, falling snow, mist, and other natural phenomena.',
   }
 
+  fleetOfFoot = {
+    title: 'Fleet Of Foot',
+    state: true,
+    description: 'Your base walking speed increases to 35 feet.',
+    applyIt() {
+      this.speed.init(35)
+    },
+  }
+
 
 
 
   constructor(options) {
     super(options)
+    this.fleetOfFoot.applyIt.call(this)
     this.abilityScoreIncrease.init({ wisdom: 1 })
   }
 }
