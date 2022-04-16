@@ -1,25 +1,19 @@
-
 import { phb } from '../core/PlayersHandBook.js'
 
-
 class Entity {
-  constructor({
-    race,
-    options,
-  }) {
-    this.experiencePoints = 0
-    this.initAbilityScores()
+  constructor(data = {}) {
+    this.name = data.name ?? ''
+    this.race = data.race ?? ''
+    this.subrace = data.subrace ?? ''
+    this.experiencePoints = data.experiencePoints ?? 0
+
     this.initAbilities()
+    this.initAbilityScores()
     this.initLevel()
-    this.initRace(race, options)
-
-  }
-
-  initRace(race, options) {
-    Object.assign(
-      this,
-      phb.getRacialTraits(race, options),
-    )
+    this.initRace({
+      race: data.race,
+      subrace: data.subrace,
+    })
   }
 
   initAbilities() {
@@ -27,10 +21,8 @@ class Entity {
   }
 
   initAbilityScores() {
-    this.abilityScores = []
-    for (let i = 0; i < 6; i++) {
-      this.abilityScores.push(phb.getAbilityScore())
-    }
+    this.abilityScores = Object.keys(this.abilities)
+      .map(() => phb.getAbilityScore())
   }
 
   initLevel() {
@@ -39,6 +31,14 @@ class Entity {
       this.proficiencyBonus = 2
     }
   }
+
+  initRace({
+    race,
+    subrace,
+  }) {
+    Object.assign(this, phb.getRacialTraits(race, { subrace }))
+  }
+
 }
 
 

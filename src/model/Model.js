@@ -1,13 +1,15 @@
 import Entity from './Entity.js'
+import modelUtils from './modelUtils.js'
+
 
 export class Model {
+  entity = new Entity()
 
-  entity = new Entity({
-    race: 'dwarf',
-    options: {
-      subrace: 'hill dwarf',
-    },
-  })
-
+  refresh(data = {}) {
+    console.log('model.refresh', modelUtils.normalizeInput(data))
+    const normalizedData = modelUtils.normalizeInput(data)
+    this.entity = new Entity(normalizedData)
+  }
 }
+
 export const model = new Model()

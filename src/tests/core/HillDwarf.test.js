@@ -1,16 +1,17 @@
-import { HillDwarf } from '../core/races/HillDwarf.js'
-import { Dwarf } from '../core/races/Dwarf.js'
-import { Race } from '../core/races/Race.js'
-import { testInstance, getInitTraiteType } from './utils.js'
-import { sideEffectTrait } from './types.js'
+import { Race } from '../../core/races/Race.js'
+import { DwarfMixin } from '../../core/races/dwarf/DwarfMixin.js'
+import { HillDwarfMixin } from '../../core/races/dwarf/HillDwarfMixin.js'
+import testUtils from '../testUtils.js'
+import { sideEffectTrait } from '../types.js'
 
+const Dwarf = DwarfMixin(Race)
+const HillDwarf = HillDwarfMixin(Dwarf)
 const hillDwarf = new HillDwarf()
 
-console.log(hillDwarf)
 const traits = [
   {
     name: 'abilityScoreIncrease',
-    type: getInitTraiteType({ value: expect.any(Object) }),
+    type: testUtils.getInitTraiteType({ value: expect.any(Object) }),
     test() {
       test('should contains wisdom: 1', () => {
 
@@ -25,10 +26,11 @@ const traits = [
       describe(`${this.name} effect`, () => {
         test('should add expeceted increase hit point maximum by 1', () => {
           const dwarfMockedInstance = {
+            name: 'dwarfMockedInstance',
             hitPointMaximumIncrease: 0,
           }
 
-          hillDwarf[this.name].applyIt.call(dwarfMockedInstance)
+          hillDwarf.dwarvenToughness.applyIt.call(dwarfMockedInstance)
 
           expect(dwarfMockedInstance.hitPointMaximumIncrease).toEqual(hillDwarf.hitPointMaximumIncrease)
         })
@@ -37,7 +39,7 @@ const traits = [
   },
 ]
 
-testInstance({
+testUtils.testRaceInstance({
   instance: {
     name: 'hillDwarf',
     value: hillDwarf,

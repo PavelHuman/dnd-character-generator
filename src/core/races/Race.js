@@ -1,3 +1,5 @@
+import { diceRoller } from '../DiceRoller.js'
+
 export class Race {
   age = {
     value: 0,
@@ -75,6 +77,10 @@ export class Race {
     this.speed.init(options.speed)
     this.alignment.init(options.alignment)
     this.abilityScoreIncrease.init(options.abilityScoreIncrease)
+  }
+
+  initProficiencyTools(tools) {
+    this.proficiency.tools = [diceRoller.rollKeys(tools)]
   }
 }
 

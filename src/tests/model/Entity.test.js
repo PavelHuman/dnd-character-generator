@@ -1,11 +1,10 @@
-import Entity from '../model/Entity.js'
+import Entity from '../../model/Entity.js'
 
 const entity = new Entity({
   race: 'dwarf',
-  options: {
-    subrace: 'hill dwarf',
-  },
+  subrace: 'hill dwarf',
 })
+
 describe('Entity', () => {
   test('should have experiencePoints property', () => {
     expect(entity).toHaveProperty('experiencePoints')
@@ -18,11 +17,12 @@ describe('Entity', () => {
     test('should enrich entity with Hill Dwarf race instance', () => {
       const mockedEntity = {}
 
-      entity.initRace.call(mockedEntity, 'dwarf', { subrace: 'hill dwarf' })
+      entity.initRace.call(mockedEntity, { race: 'dwarf', subrace: 'hill dwarf' })
 
-      expect(mockedEntity).toEqual(expect.objectContaining({
-        dwarvenToughness: expect.any(Object),
-      }))
+      const mockedKeys = Object.keys(mockedEntity)
+      const entityKeys = Object.keys(entity)
+
+      expect(entityKeys).toEqual(expect.arrayContaining(mockedKeys))
     })
   })
 })

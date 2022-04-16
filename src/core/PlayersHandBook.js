@@ -1,15 +1,16 @@
-import { diceRoller as diceRoller } from './DiceRoller.js'
-import { HillDwarf } from './races/HillDwarf.js'
-import { MountainDwarf } from './races/MountainDwarf.js'
+import { diceRoller } from './DiceRoller.js'
+import { Race } from './races/Race.js'
+import { DwarfMixin, dwarvenSubraces } from './races/dwarf/index.js'
+import coreUtils from './coreUtils.js'
 
 class PlayersHandBook {
   getAbilityScore() {
-    const rolln4d6 = diceRoller.rollDices('4d6')
-    const sorted = rolln4d6.slice().sort((a, b) => a - b)
-    const firstMaxThree = sorted.reverse().slice(0, 3)
-    const sum = firstMaxThree.reduce((acc, current) => acc + current, 0)
-    return sum
+    return diceRoller.rollDices('4d6')
+      .slice().sort((a, b) => b - a)
+      .slice(0, 3)
+      .reduce((acc, current) => acc + current, 0)
   }
+
   getAbilities() {
     return {
       strength: null,
@@ -22,20 +23,19 @@ class PlayersHandBook {
   }
 
   getRacialTraits(race, options) {
-    return this.raceFactory(race, options.subrace)
+    return this.raceFactory(race, options)
   }
 
-  raceFactory(race, subrace) {
-    if (race === 'dwarf') {
-      if (subrace === 'hill dwarf') {
-        return new HillDwarf({ subrace })
-      }
-      if (subrace === 'mountain dwarf') {
-        return new MountainDwarf({ subrace })
-      }
+  raceFactory(race, options) {
+    switch (race) {
+      case 'dwarf': return new (coreUtils.applyMixins(Race, DwarfMixin, this.getSubraceMixin(dwarvenSubraces, options))[0])(options)
+      default: return {}
     }
   }
+
+  getSubraceMixin(subraces, options) {
+    return options.subrace ? subraces[options.subrace] : subraces[diceRoller.rollKeys(Object.keys(subraces))]
+  }
 }
+
 export const phb = new PlayersHandBook()
-
-
