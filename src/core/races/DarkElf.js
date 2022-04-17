@@ -11,12 +11,15 @@ export class DarkElf extends Elf {
     },
   }
 
-
-
-
-
-
-
+  drowWeaponTraining = {
+    applyIt() {
+      const weapon = ['rapiers', 'short swords', 'hand crossbows']
+      this.proficiency.weapon = weapon
+    },
+    state: true,
+    title: 'DrowWeapon Training',
+    description: 'You have proficiency with rapiers, shortswords, and hand crossbows',
+  }
 
 
   constructor(options) {

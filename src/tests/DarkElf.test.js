@@ -26,6 +26,29 @@ const traits = [
       })
     },
   },
+  {
+
+    name: 'drowWeaponTraining',
+    type: sideEffectTrait,
+    test() {
+      describe(`${this.name} effect`, () => {
+        test('should add expeceted weapon to proficency property', () => {
+          const elfMockedInstance = {
+            proficiency: {
+              weapon: [],
+            },
+          }
+          darkElf[this.name].applyIt.call(elfMockedInstance)
+
+          const expectedWeapon = ['rapiers', 'short swords', 'hand crossbows']
+          expect(elfMockedInstance.proficiency.weapon).toEqual(
+            expect.arrayContaining(expectedWeapon),
+          )
+        })
+      })
+    },
+  },
+
 
 ]
 
