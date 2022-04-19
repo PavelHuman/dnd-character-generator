@@ -1,5 +1,7 @@
 import { Race } from '../core/races/Race.js'
 import { testInstance, getInitTraiteType } from './utils.js'
+import { sideEffectTrait } from './types.js'
+
 const race = new Race()
 
 
@@ -147,6 +149,33 @@ export const traits = [
           mockedRace.abilityScoreIncrease.init({ constitution: 2 })
 
           expect(mockedRace.abilityScoreIncrease.value).toEqual({ constitution: 4 })
+        })
+      })
+    },
+  },
+  {
+    name: 'magic',
+    type: sideEffectTrait,
+    test() {
+      describe(`${this.name} effect`, () => {
+        test('property must be added magic', () => {
+          const raceMagic = {
+            magic: {
+              cantrips: [{}],
+            },
+          }
+          race[this.name].cantrips.applyIt.call(raceMagic)
+
+          const level = {
+            firstLevel: [],
+            secondLevel: [],
+            thirdLevel: [],
+            fourthLevel: [],
+            fifthLevel: [],
+          }
+          expect(raceMagic.magic.cantrips).toEqual(
+            expect.objectContaining(level),
+          )
         })
       })
     },
