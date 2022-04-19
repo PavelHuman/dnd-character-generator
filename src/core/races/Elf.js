@@ -7,11 +7,11 @@ export class Elf extends Race {
   subraces = ['high', 'wood', 'dark']
 
   darkvision = {
-    init() {
-      this.darkvision.init(60)
+    init(darkvision) {
+      this.value = darkvision
     },
     state: true,
-    description: 'Darkvision. Accustomed to twilit forests and the night sky, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You cant discern color in darkness, only shades of gray.',
+    description: 'Darkvision. Accustomed to twilit forests and the night sky, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness  if it were dim light. You cant discern color in darkness, only shades of gray.',
     title: 'Darkvision',
     value: 0,
   }
@@ -33,7 +33,7 @@ export class Elf extends Race {
 
   constructor(options = {}) {
     super(options)
-    //this.darkvision.init(60)
+    this.darkvision.init(60)
     this.speed.init(30)
     this.abilityScoreIncrease.init({ dexterity: 2 })
   }

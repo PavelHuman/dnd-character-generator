@@ -39,6 +39,7 @@ export class Dwarf extends Race {
 
   constructor(options = {}) {
     super(options)
+    this.darkvision.init(60)
     this.speed.init(25)
     this.abilityScoreIncrease.init({ constitution: 2 })
 

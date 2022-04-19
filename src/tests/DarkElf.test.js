@@ -10,13 +10,12 @@ const traits = [
   {
     name: 'superiorDarkvision',
     type: sideEffectTrait,
-
     test() {
       describe('init', () => {
         test('darkvision has a radius of 120', () => {
           const elfMockedInstance = {
             darkvision: {
-              value: 120,
+              value: 0,
               init: darkElf.darkvision.init,
             },
           }
