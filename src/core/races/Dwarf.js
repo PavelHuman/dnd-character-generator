@@ -6,7 +6,9 @@ export class Dwarf extends Race {
   subraces = ['hill', 'mountain']
 
   darkvision = {
-    init() { },
+    init(darkvision) {
+      this.value = darkvision
+    },
     state: true,
     description: 'Accustomed to life underground, uoy have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You cant discern color in darkness, only shades of gray.',
     title: 'Darkvision',
