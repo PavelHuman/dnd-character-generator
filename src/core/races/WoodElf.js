@@ -23,7 +23,7 @@ export class WoodElf extends Elf {
     state: true,
     description: 'Your base walking speed increases to 35 feet.',
     applyIt() {
-      this.speed.init(35)
+      this.speed.value = 35
     },
   }
 

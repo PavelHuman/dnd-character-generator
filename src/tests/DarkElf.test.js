@@ -11,12 +11,11 @@ const traits = [
     name: 'superiorDarkvision',
     type: sideEffectTrait,
     test() {
-      describe('init', () => {
+      describe(`${this.name} effect`, () => {
         test('darkvision has a radius of 120', () => {
           const elfMockedInstance = {
             darkvision: {
               value: 0,
-              init: darkElf.darkvision.init,
             },
           }
           darkElf.superiorDarkvision.applyIt.call(elfMockedInstance)
@@ -37,7 +36,7 @@ const traits = [
               weapon: [],
             },
           }
-          darkElf[this.name].applyIt.call(elfMockedInstance)
+          darkElf.drowWeaponTraining.applyIt.call(elfMockedInstance)
 
           const expectedWeapon = ['rapiers', 'short swords', 'hand crossbows']
           expect(elfMockedInstance.proficiency.weapon).toEqual(
@@ -48,7 +47,29 @@ const traits = [
     },
   },
 
+  {
+    name: 'drowMagic',
+    type: sideEffectTrait,
+    test() {
+      describe(`${this.name} effect`, () => {
+        test('should add expected cantrips to skill property', () => {
+          const elfMockedInstance = {
+            magic: {
+              cantrips: {},
+            },
+          }
+          darkElf.drowMagic.applyIt.call(elfMockedInstance)
 
+          const expectedCantrips = {
+            dancingLights: 0,
+          }
+          expect(elfMockedInstance.magic.cantrips).toEqual(
+            expect.objectContaining(expectedCantrips),
+          )
+        })
+      })
+    },
+  },
 ]
 
 

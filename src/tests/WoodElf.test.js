@@ -44,12 +44,11 @@ const traits = [
     type: sideEffectTrait,
 
     test() {
-      describe('init', () => {
+      describe(`${this.name} effect`, () => {
         test('speed score increases by 35', () => {
           const elfMockedInstance = {
             speed: {
               value: 0,
-              init: woodElf.speed.init,
             },
           }
           woodElf.fleetOfFoot.applyIt.call(elfMockedInstance)
