@@ -12,12 +12,21 @@ const traits = [
     type: sideEffectTrait,
     test() {
       describe(`${this.name} effect`, () => {
-        test('darkvision has a radius of 120', () => {
-          const elfMockedInstance = {
+        let elfMockedInstance = null
+
+        beforeEach(() => {
+          elfMockedInstance = {
             darkvision: {
               value: 0,
+              init: jest.spyOn(darkElf.darkvision, 'init'),
             },
           }
+        })
+        test('superiorDarkvision.applyIt should call darkvision.init function', () => {
+          darkElf.superiorDarkvision.applyIt.call(elfMockedInstance)
+          expect(elfMockedInstance.darkvision.init).toBeCalled()
+        })
+        test('darkvision has a radius of 120', () => {
           darkElf.superiorDarkvision.applyIt.call(elfMockedInstance)
           expect(elfMockedInstance.darkvision.value).toEqual(120)
         })
