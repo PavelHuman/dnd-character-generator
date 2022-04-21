@@ -48,7 +48,7 @@ const traits = [
   },
 
   {
-    name: 'drowMagic',
+    name: 'magic',
     type: sideEffectTrait,
     test() {
       describe(`${this.name} effect`, () => {
@@ -58,7 +58,7 @@ const traits = [
               cantrips: {},
             },
           }
-          darkElf.drowMagic.applyIt.call(elfMockedInstance)
+          darkElf.magic.cantrips.dancingLights.applyIt.call(elfMockedInstance)
 
           const expectedCantrips = {
             dancingLights: 0,
