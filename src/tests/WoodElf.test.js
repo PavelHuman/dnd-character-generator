@@ -42,23 +42,30 @@ const traits = [
   {
     name: 'fleetOfFoot',
     type: sideEffectTrait,
-
     test() {
-      describe('init', () => {
-        test('speed score increases by 35', () => {
-          const elfMockedInstance = {
+      describe(`${this.name} effect`, () => {
+        let elfMockedInstance = null
+
+        beforeEach(() => {
+          elfMockedInstance = {
             speed: {
               value: 0,
-              init: woodElf.speed.init,
+              init: jest.spyOn(woodElf.speed, 'init'),
             },
           }
+        })
+        test('fleetOfFoot applyIt should call speed.init function', () => {
+          woodElf.fleetOfFoot.applyIt.call(elfMockedInstance)
+          expect(elfMockedInstance.speed.init).toBeCalled()
+        })
+        test('speed score increases by 35', () => {
           woodElf.fleetOfFoot.applyIt.call(elfMockedInstance)
           expect(elfMockedInstance.speed.value).toEqual(35)
+
         })
       })
     },
   },
-
 
   {
     name: 'maskOfTheWild',

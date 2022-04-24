@@ -1,5 +1,6 @@
 import { Race } from '../core/races/Race.js'
 import { testInstance, getInitTraiteType } from './utils.js'
+
 const race = new Race()
 
 
@@ -150,6 +151,18 @@ export const traits = [
         })
       })
     },
+  },
+
+  {
+    name: 'magic',
+    type: expect.objectContaining({
+      firstLevel: expect.any(Object),
+      secondLevel: expect.any(Object),
+      thirdLevel: expect.any(Object),
+      fourthLevel: expect.any(Object),
+      fifthLevel: expect.any(Object),
+      cantrips: expect.any(Object),
+    }),
   },
 ]
 

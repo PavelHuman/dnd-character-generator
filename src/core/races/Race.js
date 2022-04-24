@@ -69,6 +69,16 @@ export class Race {
     armor: [],
   }
 
+  magic = {
+    firstLevel: {},
+    secondLevel: {},
+    thirdLevel: {},
+    fourthLevel: {},
+    fifthLevel: {},
+    cantrips: {},
+  }
+
+
   constructor(options = {}) {
     this.age.init(options.age)
     this.size.init(options.size)

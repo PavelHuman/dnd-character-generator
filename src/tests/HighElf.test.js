@@ -45,7 +45,7 @@ const traits = [
     type: pureTrait,
   },
   {
-    name: 'extra Language',
+    name: 'extraLanguage',
     type: pureTrait,
   },
 ]

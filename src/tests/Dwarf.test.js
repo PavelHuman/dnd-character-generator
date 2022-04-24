@@ -34,6 +34,22 @@ const traits = [
       ...pureTrait,
       value: expect.any(Number),
     }),
+    test() {
+      describe('init', () => {
+        const mockedElf = {
+          darkvision: {
+            init: dwarf.darkvision.init,
+            state: true,
+            description: 'Accustomed to life underground, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You cant discern color in darkness, only shades of gray,title: Darkvision',
+            value: 0,
+          },
+        }
+        test('dark vision value should be 60', () => {
+          mockedElf.darkvision.init(60)
+          expect(mockedElf.darkvision.value).toBe(60)
+        })
+      })
+    },
   },
   {
     name: 'dwarvenResilience',
