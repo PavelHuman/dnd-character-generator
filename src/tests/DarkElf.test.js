@@ -57,31 +57,25 @@ const traits = [
   },
 
   {
-    name: 'magic',
+    name: 'drowMagic',
     type: sideEffectTrait,
     test() {
-      describe(`${this.name} effect`, () => {
-        test('should add expected cantrips to skill property', () => {
+      describe('applyIt', () => {
+        test('после вызова darkElf.drowMagic.applyIt, внутри darkElf.magic.cantrips появляется dancing Lights', () => {
           const elfMockedInstance = {
             magic: {
               cantrips: {},
             },
           }
-          darkElf.magic.cantrips.dancingLights.applyIt.call(elfMockedInstance)
-
-          const expectedCantrips = {
-            dancingLights: 0,
-          }
-          expect(elfMockedInstance.magic.cantrips).toEqual(
-            expect.objectContaining(expectedCantrips),
-          )
+          darkElf.drowMagic.applyIt.call(elfMockedInstance)
+          expect(elfMockedInstance.magic.cantrips).toHaveProperty('dancingLights', {})
         })
       })
     },
   },
+
+
 ]
-
-
 
 testInstance({
   instance: {
