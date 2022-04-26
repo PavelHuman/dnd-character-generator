@@ -14,6 +14,10 @@ const traits = [
     name: 'halflingNimbleness',
     type: pureTrait,
   },
+  {
+    name: 'lucky',
+    type: pureTrait,
+  },
 ]
 
 testInstance({
