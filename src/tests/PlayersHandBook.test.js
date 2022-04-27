@@ -4,6 +4,7 @@ import { MountainDwarf } from '../core/races/MountainDwarf.js'
 import { HighElf } from '../core/races/HighElf.js'
 import { WoodElf } from '../core/races/WoodElf.js'
 import { DarkElf } from '../core/races/DarkElf.js'
+import { Lightfoot } from '../core/races/Lightfoot.js'
 
 describe('PlayersHandBook', () => {
   test('should have getRacialTraits property', () => {
@@ -35,9 +36,18 @@ describe('getRacialTraits', () => {
     { subrace: 'dark elf', subraceClass: DarkElf },
   ]
     .forEach((item) => {
-      console.log(item)
       test(`should return ${item.subraceClass.name} instance with valid input`, () => {
         expect(phb.getRacialTraits('elf', { subrace: item.subrace })).toBeInstanceOf(item.subraceClass)
+      })
+    });
+
+  [
+    { subrace: 'lightfoot', subraceClass: Lightfoot },
+  ]
+    .forEach((item) => {
+
+      test(`should return ${item.subraceClass.name} instance with valid input`, () => {
+        expect(phb.getRacialTraits('halfling', { subrace: item.subrace })).toBeInstanceOf(item.subraceClass)
       })
     })
 

@@ -4,6 +4,7 @@ import { MountainDwarf } from './races/MountainDwarf.js'
 import { HighElf } from './races/HighElf.js'
 import { WoodElf } from './races/WoodElf.js'
 import { DarkElf } from './races/DarkElf.js'
+import { Lightfoot } from './races/Lightfoot.js'
 
 class PlayersHandBook {
   getAbilityScore() {
@@ -39,7 +40,7 @@ class PlayersHandBook {
 
     }
     if (race === 'elf') {
-      console.log(subrace)
+
       if (subrace === 'high elf') {
         return new HighElf({ subrace })
       }
@@ -49,8 +50,12 @@ class PlayersHandBook {
       if (subrace === 'dark elf') {
         return new DarkElf({ subrace })
       }
+    }
+    if (race === 'halfling') {
 
-
+      if (subrace === 'lightfoot') {
+        return new Lightfoot({ subrace })
+      }
     }
   }
 }
