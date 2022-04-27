@@ -5,6 +5,7 @@ import { HighElf } from './races/HighElf.js'
 import { WoodElf } from './races/WoodElf.js'
 import { DarkElf } from './races/DarkElf.js'
 import { Lightfoot } from './races/Lightfoot.js'
+import { Stout } from './races/Stout.js'
 
 class PlayersHandBook {
   getAbilityScore() {
@@ -55,6 +56,9 @@ class PlayersHandBook {
 
       if (subrace === 'lightfoot') {
         return new Lightfoot({ subrace })
+      }
+      if (subrace === 'stout') {
+        return new Stout({ subrace })
       }
     }
   }

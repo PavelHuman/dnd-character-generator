@@ -5,6 +5,7 @@ import { HighElf } from '../core/races/HighElf.js'
 import { WoodElf } from '../core/races/WoodElf.js'
 import { DarkElf } from '../core/races/DarkElf.js'
 import { Lightfoot } from '../core/races/Lightfoot.js'
+import { Stout } from '../core/races/Stout.js'
 
 describe('PlayersHandBook', () => {
   test('should have getRacialTraits property', () => {
@@ -43,6 +44,7 @@ describe('getRacialTraits', () => {
 
   [
     { subrace: 'lightfoot', subraceClass: Lightfoot },
+    { subrace: 'stout', subraceClass: Stout },
   ]
     .forEach((item) => {
 
