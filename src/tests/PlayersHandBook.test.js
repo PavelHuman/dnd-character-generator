@@ -24,34 +24,66 @@ describe('PlayersHandBook', () => {
 })
 
 describe('getRacialTraits', () => {
-  test('should return HillDwarf instance with valid input', () => {
-    expect(phb.getRacialTraits('dwarf', { subrace: 'hill dwarf' })).toBeInstanceOf(HillDwarf)
-  })
 
-  test('should return MountainDwarf instance with valid input', () => {
-    expect(phb.getRacialTraits('dwarf', { subrace: 'mountain dwarf' })).toBeInstanceOf(MountainDwarf)
-  });
-  [
-    { subrace: 'high elf', subraceClass: HighElf },
-    { subrace: 'wood elf', subraceClass: WoodElf },
-    { subrace: 'dark elf', subraceClass: DarkElf },
+  const array = [
+    {
+      race: 'dwarf',
+      subrace: 'hill dwarf',
+      subraceClass: HillDwarf,
+    },
+    {
+      race: 'dwarf',
+      subrace: 'mountain dwarf',
+      subraceClass: MountainDwarf,
+    },
+    {
+      race: 'elf',
+      subrace: 'high elf',
+      subraceClass: HighElf,
+    },
+    {
+      race: 'elf',
+      subrace: 'wood elf',
+      subraceClass: WoodElf,
+    },
+    {
+      race: 'elf',
+      subrace: 'dark elf',
+      subraceClass: DarkElf,
+    },
+    {
+      race: 'halfling',
+      subrace: 'lightfoot halfling',
+      subraceClass: Lightfoot,
+    },
+    {
+      race: 'halfling',
+      subrace: 'stout halfling',
+      subraceClass: Stout,
+    },
   ]
-    .forEach((item) => {
-      test(`should return ${item.subraceClass.name} instance with valid input`, () => {
-        expect(phb.getRacialTraits('elf', { subrace: item.subrace })).toBeInstanceOf(item.subraceClass)
-      })
-    });
 
-  [
-    { subrace: 'lightfoot', subraceClass: Lightfoot },
-    { subrace: 'stout', subraceClass: Stout },
-  ]
-    .forEach((item) => {
-
-      test(`should return ${item.subraceClass.name} instance with valid input`, () => {
-        expect(phb.getRacialTraits('halfling', { subrace: item.subrace })).toBeInstanceOf(item.subraceClass)
-      })
+  array.forEach((item) => {
+    test(`should return ${item.subraceClass.name} instance with valid input`, () => {
+      expect(phb.getRacialTraits(item.race, { subrace: item.subrace })).toBeInstanceOf(item.subraceClass)
     })
+  })
+  // array.forEach((item) => {
+  //   test(`should return ${item.subraceClass.name} instance with valid input`, () => {
+  //     expect(phb.getRacialTraits('elf', { subrace: item.subrace })).toBeInstanceOf(item.subraceClass)
+  //   })
+  // })
+  // array.forEach((item) => {
+  //   test(`should return ${item.subraceClass.name} instance with valid input`, () => {
+  //     expect(phb.getRacialTraits('halfling', { subrace: item.subrace })).toBeInstanceOf(item.subraceClass)
+  //   })
+  // })
+
+  /**
+   * git stash сохранить изменения
+   * свичнуться на новую ветку
+   * git stash apply применить изменения
+   */
 
 
   test('should call raceFactory method', () => {

@@ -31,6 +31,7 @@ class PlayersHandBook {
   }
 
   raceFactory(race, subrace) {
+
     if (race === 'dwarf') {
       if (subrace === 'hill dwarf') {
         return new HillDwarf({ subrace })
@@ -54,10 +55,10 @@ class PlayersHandBook {
     }
     if (race === 'halfling') {
 
-      if (subrace === 'lightfoot') {
+      if (subrace === 'lightfoot halfling') {
         return new Lightfoot({ subrace })
       }
-      if (subrace === 'stout') {
+      if (subrace === 'stout halfling') {
         return new Stout({ subrace })
       }
     }
