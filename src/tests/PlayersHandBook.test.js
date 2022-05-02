@@ -68,23 +68,6 @@ describe('getRacialTraits', () => {
       expect(phb.getRacialTraits(raceEntry.race, { subrace: raceEntry.subrace })).toBeInstanceOf(raceEntry.subraceClass)
     })
   })
-  // array.forEach((item) => {
-  //   test(`should return ${item.subraceClass.name} instance with valid input`, () => {
-  //     expect(phb.getRacialTraits('elf', { subrace: item.subrace })).toBeInstanceOf(item.subraceClass)
-  //   })
-  // })
-  // array.forEach((item) => {
-  //   test(`should return ${item.subraceClass.name} instance with valid input`, () => {
-  //     expect(phb.getRacialTraits('halfling', { subrace: item.subrace })).toBeInstanceOf(item.subraceClass)
-  //   })
-  // })
-
-  /**
-   * git stash сохранить изменения
-   * свичнуться на новую ветку
-   * git stash apply применить изменения
-   */
-
 
   test('should call raceFactory method', () => {
     const mockedPhb = {
