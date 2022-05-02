@@ -25,7 +25,7 @@ describe('PlayersHandBook', () => {
 
 describe('getRacialTraits', () => {
 
-  const array = [
+  const raceEntries = [
     {
       race: 'dwarf',
       subrace: 'hill dwarf',
@@ -63,9 +63,9 @@ describe('getRacialTraits', () => {
     },
   ]
 
-  array.forEach((item) => {
-    test(`should return ${item.subraceClass.name} instance with valid input`, () => {
-      expect(phb.getRacialTraits(item.race, { subrace: item.subrace })).toBeInstanceOf(item.subraceClass)
+  raceEntries.forEach((raceEntry) => {
+    test(`should return ${raceEntry.subraceClass.name} instance with valid input`, () => {
+      expect(phb.getRacialTraits(raceEntry.race, { subrace: raceEntry.subrace })).toBeInstanceOf(raceEntry.subraceClass)
     })
   })
   // array.forEach((item) => {
