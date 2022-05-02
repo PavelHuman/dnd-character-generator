@@ -1,6 +1,6 @@
 import { Elf } from '../../../../core/races/elf/Elf.js'
 import { Race } from '../../../../core/races/Race.js'
-import { getInitTraiteType, testRaceInstance } from '../../../test.utils.js'
+import { getInitTraiteType, testRaceInstance } from '../../../test-utils.js'
 import { pureTrait } from '../../../types.js'
 
 const elf = new Elf()

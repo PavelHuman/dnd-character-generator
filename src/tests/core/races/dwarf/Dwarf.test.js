@@ -1,6 +1,6 @@
 import { Dwarf } from '../../../../core/races/dwarf/Dwarf.js'
 import { Race } from '../../../../core/races/Race.js'
-import { getInitTraiteType, testRaceInstance } from '../../../test.utils.js'
+import { getInitTraiteType, testRaceInstance } from '../../../test-utils.js'
 import { sideEffectTrait, pureTrait } from '../../../types.js'
 
 const dwarf = new Dwarf()

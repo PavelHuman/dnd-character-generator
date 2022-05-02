@@ -1,6 +1,6 @@
 import { MountainDwarf } from '../../../../core/races/dwarf/MountainDwarf.js'
 import { sideEffectTrait } from '../../../types.js'
-import { testRaceInstance, getInitTraiteType } from '../../../test.utils.js'
+import { testRaceInstance, getInitTraiteType } from '../../../test-utils.js'
 import { Race } from '../../../../core/races/Race.js'
 import { Dwarf } from '../../../../core/races/dwarf/Dwarf.js'
 
