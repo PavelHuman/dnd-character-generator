@@ -1,8 +1,9 @@
-import { Dwarf } from '../../../../core/races/dwarf/Dwarf.js'
+import { DwarfMixin } from '../../../../core/races/dwarf/DwarfMixin.js'
 import { Race } from '../../../../core/races/Race.js'
-import { getInitTraiteType, testRaceInstance } from '../../../test-utils.js'
+import { getInitTraiteType, testRaceInstance } from '../../../testUtils.js'
 import { sideEffectTrait, pureTrait } from '../../../types.js'
 
+const Dwarf = DwarfMixin(Race)
 const dwarf = new Dwarf()
 
 const traits = [
@@ -36,7 +37,7 @@ const traits = [
     }),
     test() {
       describe('init', () => {
-        const mockedElf = {
+        const mockedDwarf = {
           darkvision: {
             init: dwarf.darkvision.init,
             state: true,
@@ -45,8 +46,8 @@ const traits = [
           },
         }
         test('dark vision value should be 60', () => {
-          mockedElf.darkvision.init(60)
-          expect(mockedElf.darkvision.value).toBe(60)
+          mockedDwarf.darkvision.init(60)
+          expect(mockedDwarf.darkvision.value).toBe(60)
         })
       })
     },
@@ -67,6 +68,6 @@ testRaceInstance({
     name: 'dwarf',
     value: dwarf,
   },
-  constructors: [Dwarf, Race],
+  constructors: [Dwarf],
   traits,
 })

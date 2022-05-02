@@ -1,6 +1,6 @@
 import { Halfling } from '../../../../core/races/halfling/Halfling.js'
 import { Race } from '../../../../core/races/Race.js'
-import { testRaceInstance } from '../../../test-utils.js'
+import { testRaceInstance } from '../../../testUtils.js'
 import { pureTrait } from '../../../types.js'
 
 const halfling = new Halfling()

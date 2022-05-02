@@ -1,9 +1,11 @@
-import { MountainDwarf } from '../../../../core/races/dwarf/MountainDwarf.js'
+import { MountainDwarfMixin } from '../../../../core/races/dwarf/MountainDwarfMixin.js'
 import { sideEffectTrait } from '../../../types.js'
-import { testRaceInstance, getInitTraiteType } from '../../../test-utils.js'
+import { testRaceInstance, getInitTraiteType } from '../../../testUtils.js'
 import { Race } from '../../../../core/races/Race.js'
-import { Dwarf } from '../../../../core/races/dwarf/Dwarf.js'
+import { DwarfMixin } from '../../../../core/races/dwarf/DwarfMixin.js'
 
+const Dwarf = DwarfMixin(Race)
+const MountainDwarf = MountainDwarfMixin(Dwarf)
 const mountainDwarf = new MountainDwarf()
 
 const traits = [

@@ -1,11 +1,16 @@
 import { diceRoller } from './DiceRoller.js'
-import { HillDwarf } from './races/dwarf/HillDwarf.js'
-import { MountainDwarf } from './races/dwarf/MountainDwarf.js'
+import { HillDwarfMixin } from './races/dwarf/HillDwarfMixin.js'
+import { MountainDwarfMixin } from './races/dwarf/MountainDwarfMixin.js'
 import { HighElf } from './races/elf/HighElf.js'
 import { WoodElf } from './races/elf/WoodElf.js'
 import { DarkElf } from './races/elf/DarkElf.js'
 import { Lightfoot } from './races/halfling/Lightfoot.js'
 import { Stout } from './races/halfling/Stout.js'
+import coreUtils from './coreUtils.js'
+import { Race } from './races/Race.js'
+import { DwarfMixin } from './races/dwarf/DwarfMixin.js'
+
+const getRandomSubrace = (race) => { console.log('generate random subrace', race) }
 
 class PlayersHandBook {
   getAbilityScore() {
@@ -30,16 +35,16 @@ class PlayersHandBook {
     return this.raceFactory(race, options.subrace)
   }
 
-  raceFactory(race, subrace) {
+  raceFactory(race, subrace = getRandomSubrace(race)) {
+    getRandomSubrace(race)
 
     if (race === 'dwarf') {
       if (subrace === 'hill dwarf') {
-        return new HillDwarf({ subrace })
+        return new (coreUtils.applyMixins(Race, DwarfMixin, HillDwarfMixin))()
       }
       if (subrace === 'mountain dwarf') {
-        return new MountainDwarf({ subrace })
+        return new (coreUtils.applyMixins(Race, DwarfMixin, MountainDwarfMixin))()
       }
-
     }
     if (race === 'elf') {
 
