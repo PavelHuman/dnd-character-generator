@@ -1,8 +1,8 @@
-import { HighElf } from '../core/races/HighElf.js'
-import { Elf } from '../core/races/Elf.js'
-import { Race } from '../core/races/Race.js'
-import { testRaceInstance, getInitTraiteType } from './utils.js'
-import { sideEffectTrait, pureTrait } from './types.js'
+import { HighElf } from '../../../../core/races/elf/HighElf.js'
+import { Elf } from '../../../../core/races/elf/Elf.js'
+import { Race } from '../../../../core/races/Race.js'
+import { testRaceInstance, getInitTraiteType } from '../../../test.utils.js'
+import { sideEffectTrait, pureTrait } from '../../../types.js'
 
 const highElf = new HighElf()
 

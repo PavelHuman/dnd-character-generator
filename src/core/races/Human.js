@@ -1,6 +1,6 @@
 import { Race } from './Race.js'
 import { phb } from '../PlayersHandBook.js'
-import { mapObject } from '../../tests/utils.js'
+import { mapObject } from '../../utils.js'
 export class Human extends Race {
 
   languages = ['common', 'oreCurses', 'elvishMusicalExpressions', 'dwarfMilitaryPhrases']

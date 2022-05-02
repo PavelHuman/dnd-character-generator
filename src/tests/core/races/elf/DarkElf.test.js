@@ -1,8 +1,8 @@
-import { DarkElf } from '../core/races/DarkElf.js'
-import { Elf } from '../core/races/Elf.js'
-import { Race } from '../core/races/Race.js'
-import { testRaceInstance } from './utils.js'
-import { sideEffectTrait } from './types.js'
+import { DarkElf } from '../../../../core/races/elf/DarkElf.js'
+import { Elf } from '../../../../core/races/elf/Elf.js'
+import { Race } from '../../../../core/races/Race.js'
+import { testRaceInstance } from '../../../test.utils.js'
+import { sideEffectTrait } from '../../../types.js'
 
 const darkElf = new DarkElf()
 

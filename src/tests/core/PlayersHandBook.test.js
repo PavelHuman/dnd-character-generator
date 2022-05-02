@@ -1,11 +1,11 @@
-import { phb } from '../core/PlayersHandBook.js'
-import { HillDwarf } from '../core/races/HillDwarf.js'
-import { MountainDwarf } from '../core/races/MountainDwarf.js'
-import { HighElf } from '../core/races/HighElf.js'
-import { WoodElf } from '../core/races/WoodElf.js'
-import { DarkElf } from '../core/races/DarkElf.js'
-import { Lightfoot } from '../core/races/Lightfoot.js'
-import { Stout } from '../core/races/Stout.js'
+import { phb } from '../../core/PlayersHandBook.js'
+import { HillDwarf } from '../../core/races/dwarf/HillDwarf.js'
+import { MountainDwarf } from '../../core/races/dwarf/MountainDwarf.js'
+import { HighElf } from '../../core/races/elf/HighElf.js'
+import { WoodElf } from '../../core/races/elf/WoodElf.js'
+import { DarkElf } from '../../core/races/elf/DarkElf.js'
+import { Lightfoot } from '../../core/races/halfling/Lightfoot.js'
+import { Stout } from '../../core/races/halfling/Stout.js'
 
 describe('PlayersHandBook', () => {
   test('should have getRacialTraits property', () => {

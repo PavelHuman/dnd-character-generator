@@ -1,4 +1,4 @@
-import { mapObject } from './utils.js'
+import { mapObject } from '../utils.js'
 
 describe('mapObject', () => {
   test('should a function', () => {

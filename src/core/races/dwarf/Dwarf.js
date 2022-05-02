@@ -1,4 +1,4 @@
-import { Race } from './Race.js'
+import { Race } from '../Race.js'
 
 export class Dwarf extends Race {
   languages = ['common', 'dwarvish']

@@ -1,4 +1,4 @@
-import { Dwarf } from './Dwarf.js'
+import { Dwarf } from "./Dwarf.js"
 
 export class HillDwarf extends Dwarf {
 

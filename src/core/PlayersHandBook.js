@@ -1,11 +1,11 @@
 import { diceRoller } from './DiceRoller.js'
-import { HillDwarf } from './races/HillDwarf.js'
-import { MountainDwarf } from './races/MountainDwarf.js'
-import { HighElf } from './races/HighElf.js'
-import { WoodElf } from './races/WoodElf.js'
-import { DarkElf } from './races/DarkElf.js'
-import { Lightfoot } from './races/Lightfoot.js'
-import { Stout } from './races/Stout.js'
+import { HillDwarf } from './races/dwarf/HillDwarf.js'
+import { MountainDwarf } from './races/dwarf/MountainDwarf.js'
+import { HighElf } from './races/elf/HighElf.js'
+import { WoodElf } from './races/elf/WoodElf.js'
+import { DarkElf } from './races/elf/DarkElf.js'
+import { Lightfoot } from './races/halfling/Lightfoot.js'
+import { Stout } from './races/halfling/Stout.js'
 
 class PlayersHandBook {
   getAbilityScore() {

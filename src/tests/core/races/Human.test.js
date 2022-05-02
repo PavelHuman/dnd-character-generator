@@ -1,8 +1,8 @@
-import { phb } from '../core/PlayersHandBook.js'
-import { Human } from '../core/races/Human.js'
-import { Race } from '../core/races/Race.js'
-import { testRaceInstance } from './utils.js'
-import { mapObject } from './utils.js'
+import { phb } from '../../../core/PlayersHandBook.js'
+import { Human } from '../../../core/races/Human.js'
+import { Race } from '../../../core/races/Race.js'
+import { testRaceInstance } from '../../test.utils.js'
+import { mapObject } from '../../../utils.js'
 
 
 const human = new Human()
