@@ -1,4 +1,4 @@
-import { diceRoller as diceRoller } from './DiceRoller.js'
+import { diceRoller } from './DiceRoller.js'
 import { HillDwarf } from './races/HillDwarf.js'
 import { MountainDwarf } from './races/MountainDwarf.js'
 import { HighElf } from './races/HighElf.js'
