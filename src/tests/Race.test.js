@@ -1,5 +1,5 @@
 import { Race } from '../core/races/Race.js'
-import { testInstance, getInitTraiteType } from './utils.js'
+import { testRaceInstance, getInitTraiteType } from './utils.js'
 
 const race = new Race()
 
@@ -167,7 +167,7 @@ export const traits = [
 ]
 
 
-testInstance({
+testRaceInstance({
   instance: {
     name: 'race',
     value: race,

@@ -1,6 +1,6 @@
 import { MountainDwarf } from '../core/races/MountainDwarf.js'
 import { sideEffectTrait } from './types.js'
-import { testInstance, getInitTraiteType } from './utils.js'
+import { testRaceInstance, getInitTraiteType } from './utils.js'
 import { Race } from '../core/races/Race.js'
 import { Dwarf } from '../core/races/Dwarf.js'
 
@@ -39,7 +39,7 @@ const traits = [
     },
   },
 ]
-testInstance({
+testRaceInstance({
   instance: {
     name: 'mountainDwarf',
     value: mountainDwarf,

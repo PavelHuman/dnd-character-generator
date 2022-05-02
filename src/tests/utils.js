@@ -4,7 +4,7 @@ export function shouldTraitExist(instance, trait) {
   })
 }
 
-export function testInstance({
+export function testRaceInstance({
   instance,
   constructors,
   traits,

@@ -1,7 +1,7 @@
 import { phb } from '../core/PlayersHandBook.js'
 import { Human } from '../core/races/Human.js'
 import { Race } from '../core/races/Race.js'
-import { testInstance } from './utils.js'
+import { testRaceInstance } from './utils.js'
 import { mapObject } from './utils.js'
 
 
@@ -18,7 +18,7 @@ describe('Human', () => {
   })
 })
 
-testInstance({
+testRaceInstance({
   instance: {
     name: 'human',
     value: human,

@@ -1,7 +1,7 @@
 import { DarkElf } from '../core/races/DarkElf.js'
 import { Elf } from '../core/races/Elf.js'
 import { Race } from '../core/races/Race.js'
-import { testInstance } from './utils.js'
+import { testRaceInstance } from './utils.js'
 import { sideEffectTrait } from './types.js'
 
 const darkElf = new DarkElf()
@@ -77,7 +77,7 @@ const traits = [
 
 ]
 
-testInstance({
+testRaceInstance({
   instance: {
     name: 'darkElf',
     value: darkElf,
