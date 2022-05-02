@@ -1,5 +1,5 @@
-import { Model } from '../model/Model.js'
-import Entity from '../model/Entity.js'
+import { Model } from '../../model/Model.js'
+import Entity from '../../model/Entity.js'
 
 const model = new Model()
 

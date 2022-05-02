@@ -1,9 +1,8 @@
-import { WoodElf } from '../core/races/WoodElf.js'
-import { sideEffectTrait, pureTrait } from './types.js'
-import { testInstance, getInitTraiteType } from './utils.js'
-import { Race } from '../core/races/Race.js'
-import { Elf } from '../core/races/Elf.js'
-
+import { WoodElf } from '../../../../core/races/elf/WoodElf.js'
+import { sideEffectTrait, pureTrait } from '../../../types.js'
+import { testRaceInstance, getInitTraiteType } from '../../../test.utils.js'
+import { Race } from '../../../../core/races/Race.js'
+import { Elf } from '../../../../core/races/elf/Elf.js'
 const woodElf = new WoodElf()
 
 const traits = [
@@ -72,7 +71,7 @@ const traits = [
     type: pureTrait,
   },
 ]
-testInstance({
+testRaceInstance({
   instance: {
     name: 'woodElf',
     value: woodElf,

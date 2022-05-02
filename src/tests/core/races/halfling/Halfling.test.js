@@ -1,7 +1,7 @@
-import { Halfling } from '../core/races/Halfling.js'
-import { Race } from '../core/races/Race.js'
-import { testInstance } from './utils.js'
-import { pureTrait } from './types.js'
+import { Halfling } from '../../../../core/races/halfling/Halfling.js'
+import { Race } from '../../../../core/races/Race.js'
+import { testRaceInstance } from '../../../test.utils.js'
+import { pureTrait } from '../../../types.js'
 
 const halfling = new Halfling()
 
@@ -20,7 +20,7 @@ const traits = [
   },
 ]
 
-testInstance({
+testRaceInstance({
   instance: {
     name: 'halfling',
     value: halfling,

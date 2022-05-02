@@ -1,4 +1,4 @@
-import Entity from '../model/Entity.js'
+import Entity from '../../model/Entity.js'
 
 const entity = new Entity({
   race: 'dwarf',

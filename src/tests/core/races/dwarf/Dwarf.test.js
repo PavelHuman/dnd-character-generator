@@ -1,7 +1,7 @@
-import { Dwarf } from '../core/races/Dwarf.js'
-import { Race } from '../core/races/Race.js'
-import { getInitTraiteType, testInstance } from './utils.js'
-import { sideEffectTrait, pureTrait } from './types.js'
+import { Dwarf } from '../../../../core/races/dwarf/Dwarf.js'
+import { Race } from '../../../../core/races/Race.js'
+import { getInitTraiteType, testRaceInstance } from '../../../test.utils.js'
+import { sideEffectTrait, pureTrait } from '../../../types.js'
 
 const dwarf = new Dwarf()
 
@@ -62,7 +62,7 @@ const traits = [
 ]
 
 
-testInstance({
+testRaceInstance({
   instance: {
     name: 'dwarf',
     value: dwarf,
